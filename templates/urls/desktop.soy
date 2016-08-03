@@ -1,23 +1,38 @@
 {namespace desktop.urls}
 
+/**
+ * @param locale
+ */
 {template .index}
-index.html
+{$locale}/index.html
 {/template}
 
+/**
+ * @param locale
+ */
 {template .static}
-static.html
+{$locale}/static.html
 {/template}
 
+/**
+ * @param locale
+ */
 {template .geocodeip}
-geocode-ip
+{$locale}/geocode-ip
 {/template}
 
+/**
+ * @param locale
+ */
 {template .reversegeocode}
-reverse-geocode
+{$locale}/reverse-geocode
 {/template}
 
+/**
+ * @param locale
+ */
 {template .xmlSitemap}
-sitemap.xml
+{$locale}/sitemap.xml
 {/template}
 
 /**
@@ -28,6 +43,7 @@ sitemap.xml
 {/template}
 
 /**
+ * @param locale
  * @param id
  * @param state
  * @param city
@@ -36,10 +52,11 @@ sitemap.xml
  * @param? isCollision
  */
 {template .locationPageSet1}
-lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html
+{$locale}/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html
 {/template}
 
 /**
+ * @param locale
  * @param id
  * @param state
  * @param city
@@ -48,10 +65,11 @@ lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:tru
  * @param? isCollision
  */
 {template .locationPageSet1alias1}
-alias1/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html
+{$locale}/alias1/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html
 {/template}
 
 /**
+ * @param locale
  * @param id
  * @param state
  * @param city
@@ -60,49 +78,60 @@ alias1/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|la
  * @param? isCollision
  */
 {template .locationPageSet1alias2}
-alias2/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html
+{$locale}/alias2/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html
 {/template}
 
 /**
+ * @param locale
  * @param id
  * @param name
  * @param? isCollision
  */
 {template .bars}
-bars/{$name|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html
-{/template}
-
-{template .barlocator}
-barsearch.html
-{/template}
-
-{template .storelocator}
-search.html
+{$locale}/bars/{$name|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html
 {/template}
 
 /**
+ * @param locale
+ */
+{template .barlocator}
+{$locale}/barsearch.html
+{/template}
+
+/**
+ * @param locale
+ */
+{template .storelocator}
+{$locale}/search.html
+{/template}
+
+/**
+ * @param locale
  */
 {template .directory1State}
-directory1/index.html
+{$locale}/directory1/index.html
 {/template}
 
 /**
+ * @param locale
  * @param state
  */
 {template .directory1City}
-directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html
+{$locale}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html
 {/template}
 
 /**
+ * @param locale
  * @param state
  * @param city
  */
 {template .directory1Locations}
-directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html
+{$locale}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html
 {/template}
 
 /**
+ * @param locale
  */
 {template .directoryBarsLocations}
-bars/index.html
+{$locale}/bars/index.html
 {/template}
