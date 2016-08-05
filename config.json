@@ -49,7 +49,7 @@
 		{
 			"name": "Locations",
 			"locationPageSet": {
-				"urlTemplate": "desktop.urls.locationPageSet11",
+				"urlTemplate": "desktop.urls.locationPageSet1",
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
 				"urlAliases": [
