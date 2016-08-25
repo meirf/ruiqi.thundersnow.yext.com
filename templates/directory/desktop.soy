@@ -21,7 +21,7 @@
       <p>Total Locations: {$locationCount}</p>
       <ul>
         {foreach $key in $keys}
-            <li><a href="{$baseUrl}{$key.url}">{$key.key}</a> ({$key.count}) [{lregionName("en", $key.loc.country, $key.key)}]</li>
+            <li><a href="{$baseUrl}{$key.url}">{$key.key}</a> ({$key.count}) [{lregionName('en', $key.loc.country, $key.key)}]</li>
         {/foreach}
       </ul>
   {call helpers.footer data="all"/}
