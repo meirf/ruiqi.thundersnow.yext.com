@@ -120,7 +120,7 @@
 					}
 				],
 				"locationPageSet": "Locations",
-				"outputFormat": ["Html"]
+				"outputFormat": ["Html", "Json"]
 			}
 		},
 		{
