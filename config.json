@@ -75,8 +75,7 @@
 				"locationPageSet": "Locations",
 				"urlTemplate": "desktop.urls.storelocator",
 				"template": "desktop.search.default",
-				"queryParam": "q",
-				"outputFormat": ["Html", "Json"]
+				"queryParam": "q"
 			}
 		},
 		{
