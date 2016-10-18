@@ -34,9 +34,13 @@
  * @param nearbyLocations
  * @param? listings
  * @param uber
+ * @param reviews
  */
 {template .default}
-  {$uber}
+  <h3>Reviews</h3>
+  <p>{$reviews}</p>
+  <h3>Uber</h3>
+  <p>{$uber}<p>
   {call helpers.header data="all"}
       {param title: $name/}
   {/call}
