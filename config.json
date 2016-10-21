@@ -14,7 +14,7 @@
 			}
 		},
 		{
-			"name": "Static",
+			"name": "Static Page 1",
 			"staticPage": {
 				"urlTemplate": "desktop.urls.static",
 				"template": "desktop.static.default"
