@@ -4,7 +4,7 @@
 	"https": false,
 	"liveSite": false,
 	"locales": ["en"],
-	"templateVersion": 3,
+	"templateVersion": 5,
 	"features": [
 		{
 			"name": "Index",
