@@ -137,7 +137,8 @@
 						}
 					}
 				],
-				"locationPageSet": "Bars",
+				"savedSearchOverride": 
+				"locationPageSet": "Japan",
 				"outputFormat": ["Html"]
 			}
 		}
