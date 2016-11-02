@@ -137,7 +137,7 @@
 						}
 					}
 				],
-				"savedSearchOverride": "Japan",
+				"locationScopeOverride": "Japan",
 				"locationPageSet": "Bars",
 				"outputFormat": ["Html"]
 			}
