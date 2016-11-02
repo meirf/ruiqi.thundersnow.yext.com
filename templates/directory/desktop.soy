@@ -79,7 +79,7 @@
               {if $key.url}
               <a href="{$baseUrl}{$key.url}">{$key.key}</a> (<a href="{$baseUrl}/alias1/{$key.url}">alias 1</a>) (<a href="{$baseUrl}/alias2/{$key.url}">alias 2</a>)
               {else}
-               $key.key
+               {$key.key}
               {/if}
               ({$key.count})
             </li>
