@@ -137,6 +137,24 @@
 						}
 					}
 				],
+				"locationPageSet": "Bars",
+				"outputFormat": ["Html"]
+			}
+		},
+		{
+			"name": "Bar list - with override",
+			"locationDirectory": {
+				"levels": [
+					{
+						"urlTemplate": "desktop.urls.directoryBarsLocationsOverride",
+						"template": "desktop.directory.locationList",
+						"field": "Locations",
+						"orderBy": {
+							"field": "Locations",
+							"order": "ascending"
+						}
+					}
+				],
 				"locationScopeOverride": {
 					"savedSearch": "Japan"
 				},
