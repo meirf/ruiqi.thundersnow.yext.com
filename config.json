@@ -55,7 +55,10 @@
 				"urlAliases": [
 					"desktop.urls.locationPageSet1alias1",
 					"desktop.urls.locationPageSet1alias2"
-				]
+				],
+				"locationScope" : {
+					"savedSearch" : "Japan"
+				}
 			}
 		},
 		{
