@@ -90,7 +90,25 @@
     <p>{$posts}</p>
 
     <h3>Products</h3>
-    <p>{$productLists}</p>
+    <ul>
+    {foreach $productList in $productLists}
+      <li>
+      <h4>{$productList.name}</h4>
+        <ul>
+          {foreach $section in $productList.sections}
+            <li>
+              <p>Section: {$section.description}</p>
+            <ul>
+              {foreach $item in $section.items}
+                <li>{$item}</li>
+              {/foreach}
+            </ul>
+            </li>
+           {/foreach}
+        </ul>
+      </li>
+    {/foreach}
+    </ul>
 
     <h3>Calendars</h3>
     <p>{$calendars}</p>
