@@ -16,42 +16,42 @@
  * @param locale
  */
 {template .index}
- {call urls.urlWithLocale data="all"}{param url}/index.html{/param}{/url}
+ {call desktop.urls.urlWithLocale data="all"}{param url}/index.html{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .static}
- {call urls.urlWithLocale data="all"}{param url}/static{/param}{/url}
+ {call desktop.urls.urlWithLocale data="all"}{param url}/static{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .geocodeip}
- {call urls.urlWithLocale data="all"}{param url}/geocode-ip{/param}{/url}
+ {call desktop.urls.urlWithLocale data="all"}{param url}/geocode-ip{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .reversegeocode}
-{call urls.urlWithLocale data="all"}{param url}/reverse-geocode{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/reverse-geocode{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .xmlSitemap}
-{call urls.urlWithLocale data="all"}{param url}/sitemap.xml{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/sitemap.xml{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .htmlSitemap}
-{call urls.urlWithLocale data="all"}{param url}/sitemap.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/sitemap.html{/param}{/url}
 {/template}
 
 /**
@@ -64,7 +64,7 @@
  * @param? isCollision
  */
 {template .locationPageSet1}
-{call urls.urlWithLocale data="all"}{param url}/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/url}
 {/template}
 
 /**
@@ -77,7 +77,7 @@
  * @param? isCollision
  */
 {template .locationPageSet1alias1}
-{call urls.urlWithLocale data="all"}{param url}/alias1/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/alias1/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/url}
 {/template}
 
 /**
@@ -90,7 +90,7 @@
  * @param? isCollision
  */
 {template .locationPageSet1alias2}
-{call urls.urlWithLocale data="all"}{param url}/alias2/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/alias2/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}{/param}{/url}
 {/template}
 
 /**
@@ -100,28 +100,28 @@
  * @param? isCollision
  */
 {template .bars}
-{call urls.urlWithLocale data="all"}{param url}/bars/{$name|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/bars/{$name|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .barlocator}
-{call urls.urlWithLocale data="all"}{param url}/barsearch.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/barsearch.html{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .storelocator}
-{call urls.urlWithLocale data="all"}{param url}/search.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/search.html{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .directory1State}
-{call urls.urlWithLocale data="all"}{param url}/directory1/index.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/index.html{/param}{/url}
 {/template}
 
 /**
@@ -129,7 +129,7 @@
  * @param state
  */
 {template .directory1City}
-{call urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/url}
 {/template}
 
 /**
@@ -138,19 +138,19 @@
  * @param city
  */
 {template .directory1Locations}
-{call urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .directoryBarsLocations}
-{call urls.urlWithLocale data="all"}{param url}/bars/index.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/bars/index.html{/param}{/url}
 {/template}
 
 /**
  * @param locale
  */
 {template .directoryBarsLocationsOverride}
-{call urls.urlWithLocale data="all"}{param url}/bars-override/index.html{/param}{/url}
+{call desktop.urls.urlWithLocale data="all"}{param url}/bars-override/index.html{/param}{/url}
 {/template}
