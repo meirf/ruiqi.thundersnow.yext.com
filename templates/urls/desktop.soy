@@ -6,12 +6,10 @@
  * @param locale
  */
 {template .urlWithLocale}
- {call url.urlWithLocale data="all"}{param url}
 	{if $locale != 'en'}
 		{$locale|casing:'lower'}/
 	{/if}
 	{$url |noAutoescape}
- {/param}{/url}
 {/template}
 
 /**
