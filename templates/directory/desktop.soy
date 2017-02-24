@@ -69,9 +69,6 @@
  * @param locale
  */
 {template .locationList}
-  {call helpers.header data="all"}
-      {param title: 'Directory - Locations'/}
-  {/call}
       <h3>Keys</h3>
       <p>Total Locations: {$locationCount}</p>
       <ul>
@@ -133,5 +130,4 @@
          </li>
         {/foreach}
       </ul>
-  {call helpers.footer data="all"/}
 {/template}
