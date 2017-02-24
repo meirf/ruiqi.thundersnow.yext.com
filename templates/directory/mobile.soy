@@ -49,8 +49,12 @@
  * @param locale
  */
 {template .locationList}
+{call helpers.header data="all"}
+    {param title: 'Directory - Locations'/}
+{/call}
       {$baseUrl}<br/>
       {$locationCount}<br/>
       {$keys}<br/>
       {$locale}
+{call helpers.footer data="all"/}
 {/template}
