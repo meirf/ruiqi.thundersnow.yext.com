@@ -1,0 +1,40 @@
+{namespace common}
+
+/**
+ * @param baseUrl
+ */
+{template .footer }
+
+  <!-- footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="wrapper">
+
+      <div class="footer__legal">
+        <span class="footer__legal-info">
+          {msg desc=""}
+            Yext <span>|</span> One Madison Avenue, 5th Floor, New York, NY 10010 <span>|</span> 1-888-444-2988
+          {/msg}
+        </span>
+
+        <ul class="footer__list">
+          <li id="menu-item-17150"
+              class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17150">
+            <a href="http://www.yext.com/privacy-policy/">
+              {msg desc=""}
+                Privacy Policy
+              {/msg}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="footer__nyc-icon"
+         href="http://www.digital.nyc/startups/yext">
+        <img src="{$baseUrl}images/icon-made-in-ny.png"
+             width="60"
+             height="60"
+             alt="Made in NY">
+      </a>
+    </div>
+  </footer>
+{/template}

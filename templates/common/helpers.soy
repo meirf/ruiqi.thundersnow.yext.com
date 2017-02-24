@@ -1,0 +1,183 @@
+{namespace common.helpers}
+
+/**
+ * @param baseUrl
+ * @param? placeHolder
+ * @param? formLabel
+ * @param? defaultValue
+ * @param? optionalInputs
+*/
+{template .simple_search}
+  {call components.search.simple_search_bar data="all"}
+    {param searcherPath}
+      {call .searcherPath data="all" /}
+    {/param}
+    {param queryParameter: 'q' /}
+    {param formLabel: 'City, State/Provice, Zip or City & Country' /}
+    {param submitLabel}
+      {msg desc="Find a location."}
+        Find
+      {/msg}
+    {/param}
+    {param placeHolder}
+      {if $placeHolder}
+        {$placeHolder}
+      {else}
+        {msg desc="Form placeholder for geographic search"}
+          New York, NY
+        {/msg}
+      {/if}
+    {/param}
+  {/call}
+{/template}
+
+/**
+ * @param corporateCode
+ * @param city
+ */
+{template .location_name}
+  {$corporateCode ?: $city}
+{/template}
+
+/**
+ */
+{template .keywords}
+  // TODO: Put some keywords here!
+{/template}
+
+{template .searcherPath}
+  search.html
+{/template}
+
+{template .rootPath}
+  index.html
+{/template}
+
+/**
+ * @param siteDomain
+ * @param crumbUrls
+ * @param isHttps
+ */
+{template .canonical_link}
+  <link rel="canonical" href="{call .canonical_link_url data="all" /}" />
+{/template}
+
+/**
+ * @param siteDomain
+ * @param crumbUrls
+ * @param? isHttps
+ */
+{template .canonical_link_url}
+  http{if $isHttps}s{/if}://{$siteDomain}/{$crumbUrls[length($crumbUrls)-1]}
+{/template}
+
+/**
+ * @param baseUrl
+ */
+{template .set_baseUrl}
+  <script type="text/javascript">
+    window.Yext = (function(Yext){lb}
+        Yext.BaseUrl = "{$baseUrl}";
+        return Yext
+      {rb}
+    )(window.Yext || {lb}{rb});
+  </script>
+{/template}
+
+/**
+ * @param id
+ */
+{template .set_locationId}
+  <script type="text/javascript">
+    window.Yext = (function(Yext){lb}
+        Yext.LocationId = "{$id}";
+        return Yext
+      {rb}
+    )(window.Yext || {lb}{rb});
+  </script>
+{/template}
+
+/**
+ */
+{template .year}
+  <span class="c-copy-date">2015</span>
+{/template}
+
+/**
+ * @param crumbUrls
+ * @param https
+ * @param siteDomain
+ */
+{template .app_search_metadata}
+  {call components.associatedapps.app_search_metadata data="all"}
+    {param apple_app_id: 'my_apple_app_id' /}
+  {/call}
+{/template}
+
+
+/**
+ * @param crumbNames
+ * @param crumbUrls
+ * @param baseUrl
+ */
+{template .breadcrumbs}
+  <div class="bread-crumbs-container">
+    {call components.bread_crumbs data="all"}
+    {/call}
+  </div>
+{/template}
+
+/*
+{call common.helpers.uber_link}
+ {param name: /}
+ {param routableLatitude: /}
+ {param routableLongitude: /}
+ {param linkText: /}
+ {param partnerLink: /}
+ {param alternateClientId: /}
+{/call}
+*/
+
+/**
+ * @param name
+ * @param routableLatitude
+ * @param routableLongitude
+ * @param? linkText
+ * @param? partnerLink
+ * @param? alternateClientId
+ */
+{template .uber_link}
+  {let $linkLabel: $linkText ?: 'Meet the Yext team' /}
+  {let $partnerDeepLink: $partnerLink ?: 'http://www.yext.com/company/about/' /}
+  {let $clientId: $alternateClientId ?: 'RpZpsA6KKhL06s81vA1J-02rCgHG0CtG' /}
+  https://m.uber.com/ul/?action=setPickup&pickup=my_location&client_id={$clientId}&dropoff[latitude]={$routableLatitude}&dropoff[longitude]={$routableLongitude}&dropoff[nickname]={$name |escapeUri}&link_text={$linkLabel |escapeUri}&partner_deeplink={$partnerDeepLink |escapeUri}
+{/template}
+
+/*
+{call common.helpers.uber_button}
+ {param name: /}
+ {param routableLatitude: /}
+ {param routableLongitude: /}
+ {param linkText: /}
+ {param partnerLink: /}
+ {param alternateClientId: /}
+{/call}
+*/
+
+/**
+ * @param name
+ * @param routableLatitude
+ * @param routableLongitude
+ * @param? linkText
+ * @param? partnerLink
+ * @param? alternateClientId
+ */
+{template .uber_button}
+  <div class="uber-button-wrapper">
+    <a class="uber-button-link" href="{call .uber_link data="all" /}">
+      {msg desc=""}
+        Get a ride with Uber
+      {/msg}
+    </a>
+  </div>
+{/template}

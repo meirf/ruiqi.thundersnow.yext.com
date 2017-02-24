@@ -1,0 +1,404 @@
+{namespace common}
+
+/**
+ * @param baseUrl
+ * @param versions
+ * @param locale
+ */
+{template .header}
+
+  <!-- header -->
+  <header class="header header--white module js-header"
+          data-module="nav">
+    <div class="wrapper header__container">
+
+      <!-- mobile elements -->
+      <button class="header__hamburger button--clear js-hamburger">
+        <span class="sr-only">Toggle Menu</span>
+      </button>
+
+      <!-- logo -->
+      <a class="header__logo" href="http://www.yext.com">
+        <svg id="yext-logo" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 661.9 294.18" itemscope itemprop="image">
+          <g>
+            <g>
+              <path class="yext-logo__shape" d="M116.91,242.08c-14.71,38-31.26,52.09-61.29,52.09-17.93,0-30.95-4.29-44-11.34L26,251.12c7.66,4.29,16.09,7,25,7,12,0,19.31-5.21,26.35-21.45L0,50.87H45.35l52.86,137.9,48.11-137.9h44.43Z" />
+              <path class="yext-logo__shape" d="M285,206.23c20.68,0,35.55-7.81,50.41-22.22l25,22.22c-17.62,21.14-41.83,34.78-76,34.78-53.78,0-95.3-39.07-95.3-96.83,0-53.47,37.69-97.14,90.7-97.14,59.14,0,89,46.42,89,100.36A105.92,105.92,0,0,1,368,159H231.51C236.41,189.38,257.56,206.23,285,206.23ZM326.51,131c-2.76-27.43-19-48.88-47.19-48.88-26,0-44.28,20.07-48.11,48.88Z"
+              />
+              <path class="yext-logo__shape" d="M612,178.8c0,16.55,8.43,23.14,22.83,23.14a58.06,58.06,0,0,0,26.35-6.28v34.78c-10.57,6-22.52,9.5-38.3,9.5-31.26,0-53.47-13.79-53.47-54.55V0H612V51H661.9V87.64H612V178.8Z" />
+              <polygon class="yext-logo__shape" points="481.56 144.03 413.84 51.17 367.42 51.17 435.14 144.03 367.42 236.87 413.84 236.87 481.56 144.03" />
+              <polygon class="yext-logo__shape" points="479.42 112.16 492.13 129.47 549.28 51.17 502.86 51.17 468.85 97.75 479.42 112.16" />
+              <polygon class="yext-logo__shape" points="492.13 158.43 479.42 175.89 468.85 190.3 502.86 236.87 549.28 236.87 492.13 158.43" />
+            </g>
+          </g>
+        </svg>
+      </a>
+
+      <!-- sub nav -->
+      <ul class="header__subnav">
+
+        <ul>
+          {call .nav_links data="all"}
+            {param nav: 'sub' /}
+          {/call}
+        </ul>
+        <li class="header__subnav-item header__subnav-item--flag">
+          {call .version data="all"}
+            {param versionLocale: $locale /}
+            {param versionUrl: '#' /}
+            {param first: true /}
+            {param button: true /}
+          {/call}
+
+          <div class="header__country-dropdown js-country-list">
+            {call .version data="all"}
+              {param versionLocale: $locale /}
+              {param versionUrl: '#' /}
+            {/call}
+            {foreach $lc in ['en-ca', 'fr-ca', 'de', 'en-gb', 'en']}
+              {if $lc != $locale and isNonnull($versions[$lc])}
+                {call .version data="all"}
+                  {param versionLocale: $lc /}
+                  {param versionUrl: $versions[$lc] /}
+                {/call}
+              {/if}
+            {/foreach}
+          </div>
+        </li>
+      </ul>
+
+      <ul class="nav header__nav">
+        {call .nav_links data="all"}
+          {param nav: 'main' /}
+        {/call}
+      </ul>
+    </div>
+  </header>
+{/template}
+
+/**
+ * @param locale
+ * @param nav
+ * @param? classes
+ */
+{template .nav_links}
+  {let $linksForLocale: [
+      'en': [
+        'sub': [
+          [
+            'path': 'support-faq/',
+            'title': 'Support'
+          ],
+          [
+            'path': 'signin/',
+            'title': 'Sign In'
+          ]
+        ],
+        'main': [
+          [
+            'path': 'products/',
+            'title': 'Products'
+          ],
+          [
+            'path': 'solutions/',
+            'title': 'Solutions'
+          ],
+          [
+            'path': 'industries/',
+            'title': 'Industries'
+          ],
+          [
+            'path': 'customers/',
+            'title': 'Customers'
+          ],
+          [
+            'path': 'partners/',
+            'title': 'Partners'
+          ],
+          [
+            'path': 'about/',
+            'title': 'About'
+          ],
+          [
+            'path': 'resources/',
+            'title': 'Resources'
+          ]
+        ]
+      ],
+      'en-ca': [
+        'sub': [
+          [
+            'path': 'support-faq/',
+            'title': 'Support'
+          ],
+          [
+            'path': 'signin/',
+            'title': 'Sign In'
+          ]
+        ],
+        'main': [
+          [
+            'path': 'products/',
+            'title': 'Products'
+          ],
+          [
+            'path': 'solutions/',
+            'title': 'Solutions'
+          ],
+          [
+            'path': 'industries/',
+            'title': 'Industries'
+          ],
+          [
+            'path': 'customers/',
+            'title': 'Customers'
+          ],
+          [
+            'path': 'about/',
+            'title': 'About'
+          ],
+          [
+            'path': 'resources/',
+            'title': 'Resources'
+          ]
+        ]
+      ],
+      'fr-ca': [
+        'sub': [
+          [
+            'path': 'soutien/',
+            'title': 'Soutien'
+          ],
+          [
+            'path': 'se-connecter/',
+            'title': 'Se connecter'
+          ]
+        ],
+        'main': [
+          [
+            'path': 'produits',
+            'title': 'Produits'
+          ],
+          [
+            'path': 'solutions',
+            'title': 'Solutions'
+          ],
+          [
+            'path': 'industries',
+            'title': 'Industries'
+          ],
+          [
+            'path': 'clients',
+            'title': 'Clients'
+          ],
+          [
+            'path': 'a-propos-de-nous',
+            'title': 'À Propos De Nous'
+          ]
+        ]
+      ],
+      'de': [
+        'sub': [
+          [
+            'path': 'support-faq/',
+            'title': 'Support'
+          ],
+          [
+            'path': 'anmelden/',
+            'title': 'Anmelden'
+          ]
+        ],
+        'main': [
+          [
+            'path': 'produkte',
+            'title': 'Produkte'
+          ],
+          [
+            'path': 'losungen',
+            'title': 'Lösungen'
+          ],
+          [
+            'path': 'branchen',
+            'title': 'Branchen'
+          ],
+          [
+            'path': 'kunden',
+            'title': 'Kunden'
+          ],
+          [
+            'path': 'uber-uns',
+            'title': 'Über uns'
+          ],
+          [
+            'path': 'ressourcen',
+            'title': 'Ressourcen'
+          ]
+        ]
+      ],
+      'en-gb': [
+        'sub': [
+          [
+            'path': 'support-faq/',
+            'title': 'Support'
+          ],
+          [
+            'path': 'signin/',
+            'title': 'Sign In'
+          ]
+        ],
+        'main': [
+          [
+            'path': 'products/',
+            'title': 'Products'
+          ],
+          [
+            'path': 'solutions/',
+            'title': 'Solutions'
+          ],
+          [
+            'path': 'industries/',
+            'title': 'Industries'
+          ],
+          [
+            'path': 'customers/',
+            'title': 'Customers'
+          ],
+          [
+            'path': 'about/',
+            'title': 'About'
+          ],
+          [
+            'path': 'resources/',
+            'title': 'Resources'
+          ]
+        ]
+      ]
+    ]
+  /}
+  {let $baseForLocale: [
+      'en': 'http://www.yext.com/',
+      'en-ca': 'http://www.yext.ca/',
+      'fr-ca': 'http://www.yext.ca/fr/',
+      'de': 'http://www.yext.de/',
+      'en-gb': 'http://www.yext.co.uk/'
+    ]
+  /}
+  {foreach $link in $linksForLocale[$locale][$nav]  ?: $linksForLocale['en'][$nav] }
+    <li class="{$classes ?: 'menu-item menu-item-type-post_type menu-item-object-page'}">
+      <a href="{$baseForLocale[$locale] ?: $baseForLocale['en']}{$link.path}"
+         class="menu-item__link">
+        {$link.title}
+      </a>
+    </li>
+  {/foreach}
+{/template}
+
+
+/**
+ // * @param locale
+ */
+{template .sub_nav_links}
+<li class="menu-item menu-item-type-post_type menu-item-object-page">
+  <a href="http://www.yext.com/support-faq/">
+    Support
+  </a>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page">
+  <a href="http://www.yext.com/signin/">
+    Sign In
+  </a>
+</li>
+{/template}
+
+/**
+ * @param versionLocale
+ * @param versionUrl
+ * @param locale
+ * @param baseUrl
+ * @param? first
+ * @param? button
+ */
+{template .version}
+  {let $us}
+    {msg desc="Abbreviation of The United States"}
+      US
+    {/msg}
+  {/let}
+  {let $ca}
+    {msg desc=""}
+      Canada
+    {/msg}
+  {/let}
+  {let $caFr}
+    {msg desc=""}
+      Canada (FR)
+    {/msg}
+  {/let}
+  {let $de}
+    {msg desc=""}
+      Germany
+    {/msg}
+  {/let}
+  {let $gb}
+    {msg desc=""}
+      United Kingdom
+    {/msg}
+  {/let}
+
+  {let $localeInfo: [
+      'en': [
+        'icon': 'flags_300px_0096_icon-flag-united-states.png',
+        'iconWidth': 14,
+        'iconHeight': 10,
+        'title': $us
+      ],
+      'en-ca': [
+        'icon': 'flags_300px_0020_icon-flag-canada-1.png',
+        'iconWidth': 14,
+        'iconHeight': 10,
+        'title': $ca
+      ],
+      'fr-ca': [
+        'icon': 'flags_300px_0020_icon-flag-canada-1.png',
+        'iconWidth': 14,
+        'iconHeight': 10,
+        'title': $caFr
+      ],
+      'de': [
+        'icon': 'flags_300px_0038_icon-flag-germany.png',
+        'iconWidth': 14,
+        'iconHeight': 10,
+        'title': $de
+      ],
+      'en-gb': [
+        'icon': 'flags_300px_0095_icon-flag-united-kingdom.png',
+        'iconWidth': 14,
+        'iconHeight': 10,
+        'title': $gb
+      ]
+    ]
+    /}
+  {let $info: $localeInfo[$versionLocale] /}
+  {if $info}
+    {let $tag: $button ? 'button': 'a' /}
+    <{$tag} class="
+       {if $button}js-toggle-country button--clear{/if}
+       {if not $first} header__country-option
+        {if $versionLocale == $locale} header__country-option--selected{/if}
+       {/if}
+       "
+       {if not $button}
+       href="{$baseUrl}{$versionUrl}"
+       {/if}
+       >
+       <img class="header__country-flag"
+            src="{$baseUrl}images/{$info.icon}"
+            width="{$info.iconWidth}"
+            height="{$info.iconHeight}"
+            alt="">
+      {if not $first}
+        {sp}{$info.title}
+      {/if}
+    </{$tag}>
+  {/if}
+{/template}

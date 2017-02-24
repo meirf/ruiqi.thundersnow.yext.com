@@ -1,0 +1,88 @@
+{namespace common}
+
+/**
+ * This template is intended to be heavily modified as needed on each implementation.
+ * It is intended to keep elements that are common to every page on the site in this template.
+ * The templating structure is heavily inspired by the hierarchy of templates in Rails.
+ * See http://guides.rubyonrails.org/layouts_and_rendering.html#understanding-yield for more information.
+ * @param baseUrl
+ * @param crumbUrls
+ * @param crumbNames
+ * @param? isHttps
+ * @param siteDomain
+ * @param locale
+ * @param versions
+ // content params:
+ * @param pageTitle
+ * @param metaDescription
+ * @param metaKeywords
+ * @param pageContent
+ * @param heroContent
+ * @param? heroTitle
+ * @param analytics
+ * @param? headInclude
+ * @param? bodyInclude
+ * @param? schemaScope
+ */
+{template .layout}
+  <!doctype html>
+    <html lang="{$locale}"> // See here: http://www.w3.org/International/questions/qa-lang-why.en
+      <head>
+        {call common.head_tags data="all"}
+          {param logo: '' /}
+          {param title}
+            {$pageTitle} - Yext
+          {/param}
+          {param keywords: $metaKeywords /}
+          {param description: $metaDescription /}
+        {/call}
+        {call common.helpers.set_baseUrl data="all" /}
+
+        {$headInclude ?: '' |noAutoescape}
+        {if $schemaScope}
+          <link id="page-url" itemprop="url" href="{call common.helpers.canonical_link_url data="all" /}">
+        {/if}
+        <script src="https://use.typekit.net/cjo7zuk.js"></script>
+        <script>
+          try {lb}
+            Typekit.load({lb}
+              async: true
+            {rb});
+          {rb} catch (e) {lb}{rb}
+        </script>
+      </head>
+      <body>
+        // See here: http://webaim.org/techniques/skipnav/
+         <a href="#first-anchor" class="sr-only sr-only-focusable" id="skip-nav">
+          Skip to content
+        </a>
+        // The common.header is another template that is intended to be heavily modified based on
+        // the needs of a given project. Please do not take it as gospel, it is likely not the best
+        // way to implement the design you've been given.
+        {call common.header data="all" /}
+
+        <main id="main" class="site-main yext-main"{if $schemaScope} {$schemaScope |noAutoescape} itemref="yext-logo page-url"{/if}>
+          <section>
+          <div class="hero module" data-module="hero">
+            <div class="hero__image-container">
+              <div class="hero__bg-image">
+                {$heroContent |noAutoescape}
+              </div>
+              <div class="wrapper">
+                <div class="hero__headline">
+                  {$heroTitle ?: '' |noAutoescape}
+                </div>
+              </div>
+            </div>
+          </section>
+          {$pageContent |noAutoescape}
+        </main>
+
+        {call common.footer data="all" /}
+
+        {$bodyInclude ?: '' |noAutoescape}
+        //<script src="{$baseUrl}yext.min.js">
+        {$analytics |noAutoescape}
+      </body>
+    </html>
+{/template}

@@ -1,0 +1,83 @@
+{namespace common.include}
+
+/**
+ * modernizr
+ * @param baseUrl
+ */
+{template .modernizr}
+  <script src="{$baseUrl}js/modernizr-d5c0dcfc.js" type="text/javascript" async></script>
+{/template}
+
+
+
+/**
+ * location_style_css
+ * @param baseUrl
+ */
+{template .location_style_css}
+  // Base build doesn't require Modernizr, uncomment if needed!
+  // {call .modernizr data="all" /}
+
+  {if strlen($baseUrl) < 0}{/if} // this will explode if $baseUrl is an object
+
+  <link rel="stylesheet" href="{$baseUrl}css/location/style.7dc84e46.css"/>
+{/template}
+
+
+
+/**
+ * location_script_js
+ * @param baseUrl
+ */
+{template .location_script_js}
+  <script src="{$baseUrl}js/location/script-ac4fe261.js" type="text/javascript"></script>
+
+{/template}
+
+
+
+/**
+ * directory_style_css
+ * @param baseUrl
+ */
+{template .directory_style_css}
+  // Base build doesn't require Modernizr, uncomment if needed!
+  // {call .modernizr data="all" /}
+
+  {if strlen($baseUrl) < 0}{/if} // this will explode if $baseUrl is an object
+
+  <link rel="stylesheet" href="{$baseUrl}css/directory/style.ea2f2a74.css"/>
+{/template}
+
+
+/**
+ * directory_locationList_js
+ * @param baseUrl
+ */
+{template .directory_locationList_js}
+  <script src="{$baseUrl}js/directory/locationList-c3934b9a.js" type="text/javascript"></script>
+
+{/template}
+
+/**
+ * directory_style_css
+ * @param baseUrl
+ */
+{template .static_style_css}
+  // Base build doesn't require Modernizr, uncomment if needed!
+  // {call .modernizr data="all" /}
+
+  {if strlen($baseUrl) < 0}{/if} // this will explode if $baseUrl is an object
+
+  <link rel="stylesheet" href="{$baseUrl}css/static/style.css"/>
+{/template}
+
+
+/**
+ * directory_static_team_js
+ * @param baseUrl
+ */
+{template .static_team_js}
+  <script src="{$baseUrl}js/static/team-151a4e8c.js" type="text/javascript"></script>
+
+{/template}
