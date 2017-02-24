@@ -91,8 +91,8 @@
                 {/call}
                 {call components.hours.location_hours_today data="$loc" /}
                 {let $local}
-                  {foreach $phone in $loc.phones}
-                    {if $phone.type == 'LOCAL'}
+                  {foreach $phone1 in $loc.phones}
+                    {if $phone1.type == 'LOCAL'}
                       1
                     {/if}
                   {/foreach}
