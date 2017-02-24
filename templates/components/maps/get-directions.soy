@@ -1,0 +1,109 @@
+{namespace components.maps}
+
+/*
+{call components.maps.get_directions}
+  {param address1: /}
+  {param address2: /}
+  {param state: /}
+  {param city: /}
+  {param postalCode: /}
+  {param country: /}
+  {param name: /}
+{/call}
+*/
+
+/**
+ * Get Directions component
+ * @param address1
+ * @param? address2
+ * @param state
+ * @param city
+ * @param postalCode
+ * @param country
+ * @param name
+ * @param? listings
+ * @param? provider
+ * @param? buttonText
+ * @param? noTrack
+ * @param? gaCategory
+ */
+{template .get_directions}
+<div class="c-get-directions">
+  <div class="c-get-directions-button-wrapper">
+    <a class="c-get-directions-button"
+       target="_blank"
+       href='{call .get_directions_url data="all" /}'
+       data-ga-category="{$gaCategory ?: 'Get Directions'}"
+       {if $noTrack}data-ga-no-track="true"{/if}
+       >
+        {if $buttonText}
+          {$buttonText |noAutoescape}
+        {else}
+          {msg desc=""}
+            Get Directions
+          {/msg}
+        {/if}
+    </a>
+  </div>
+</div>
+{/template}
+
+
+/*
+{call components.maps.get_directions_url}
+  {param address1: /}
+  {param state: /}
+  {param city: /}
+  {param postalCode: /}
+  {param country: /}
+  {param name: /}
+
+  {param address2: /}
+  {param provider: /}
+{/call}
+*/
+
+/**
+ * Get Directions component
+ * @param address1
+ * @param? address2
+ * @param state
+ * @param city
+ * @param postalCode
+ * @param country
+ * @param? name
+ * @param? provider
+ * @param? useCurrentLocation
+ * @param? listings
+ */
+{template .get_directions_url}
+  {let $url}
+    {if $provider == 'Bing'}
+      {let $query}
+        {$address1 |noAutoescape}, {$city}, {$state} {$postalCode}
+      {/let}
+      http://bing.com/maps/default.aspx?where1={$query |escapeUri}
+    {elseif $provider == 'MapQuest'}
+      {let $query}
+        {$address1 |noAutoescape}{if $address2} {$address2 |noAutoescape}{/if} {$city} {$state} {$postalCode}{if $country} {$country}{/if}
+      {/let}
+      http://mapq.st/directions?q={$query |escapeUri}&maptype=map
+    {else}
+      {if $listings?.googleMyBusiness?.url and indexOf($listings.googleMyBusiness.url, 'maps.google.com') != -1}
+        {$listings.googleMyBusiness.url}
+      {elseif $listings?.googleReviews?.url}
+        {$listings.googleReviews.url}
+      {else}
+        {let $query}
+          {$address1 |noAutoescape}, {if $address2}{$address2 |noAutoescape}, {/if}{$city}, {$state} {$postalCode} {$country}{if $name} ({$name |noAutoescape}){/if}
+        {/let}
+        {if $useCurrentLocation}
+          https://www.google.com/maps/dir/Current+Location/{$query |noAutoescape |escapeUri}
+        {else}
+          http://maps.google.com/?q={$query |noAutoescape |escapeUri}&output=classic
+        {/if}
+      {/if}
+    {/if}
+  {/let}
+  {$url | noAutoescape}
+{/template}

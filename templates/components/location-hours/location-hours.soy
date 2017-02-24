@@ -1,0 +1,522 @@
+{namespace components.hours}
+
+/*
+{call components.hours.location_hours}
+  {param hours: /}
+
+  {param title: /}
+  {param highlightToday: /}
+  {param highlightTodayDotAfterRow: /}
+  {param showOpenToday: /}
+  {param open24HoursMessage: /}
+  {param openTodayMessage: /}
+  {param hideSchemaOrg: /}
+  {param dayOfWeekMapper: /}
+  {param twentyFourHourClock: /}
+  {param collapseDays: /}
+  {param disableOpenUntil: /}
+{/call}
+*/
+
+/**
+ * Location hours component
+ * @param hours
+ * @param? title
+ * @param? highlightToday boolean
+ * @param? highlightTodayBackground boolean
+ * @param? showOpenToday
+ * @param? open24HoursMessage
+ * @param? openTodayMessage
+ * @param? hideSchemaOrg
+ * @param? dayOfWeekMapper
+ * @param? twentyFourHourClock
+ * @param? collapseDays
+ * @param? wholeWeekMessage
+ * @param? disableOpenUntil
+ * @param? hLevel
+ */
+{template .location_hours}
+  <div class="c-location-hours">
+    {call components.util.h_level data="all"}
+      {param class: 'c-location-hours-title' /}
+      {param contents}
+        {if isNonnull($title)}
+          {$title |noAutoescape}
+        {else}
+          {msg desc=""}
+            Store Hours:
+          {/msg}
+        {/if}
+      {/param}
+      {param level: $hLevel ?: 4 /}
+    {/call}
+    {if $hours.additionalText}
+    <div class="c-location-hours-additional-text">
+      {$hours.additionalText}
+    </div>
+    {/if}
+    {if $hours.days}
+      {call .hours_table data="all" /}
+      {if $showOpenToday}
+        {call .open_today data="all" /}
+      {/if}
+    {/if}
+  </div>
+{/template}
+
+/**
+ * @param hours
+ * @param? highlightToday boolean
+ * @param? highlightTodayBackground boolean
+ * @param? open24HoursMessage
+ * @param? hideSchemaOrg
+ * @param? dayOfWeekMapper
+ * @param? twentyFourHourClock
+ * @param? collapseDays
+ * @param? wholeWeekMessage
+ * @param? showOpenToday
+ * @param? disableOpenUntil
+ */
+{template .hours_table}
+
+  {let $days: $collapseDays ? collapseDays($hours.days) : $hours.days /}
+  {let $dayIndexes: [
+    'MONDAY': 0,
+    'TUESDAY': 1,
+    'WEDNESDAY': 2,
+    'THURSDAY': 3,
+    'FRIDAY': 4,
+    'SATURDAY': 5,
+    'SUNDAY': 6
+    ]
+  /}
+  {let $allDayMessage}
+    {if $open24HoursMessage}
+      {$open24HoursMessage}
+    {else}
+      {msg desc=""}
+        Open 24 hours
+      {/msg}
+    {/if}
+  {/let}
+  <div class="c-location-hours-details-wrapper js-location-hours" {call .hours_data data="all" /}>
+    {if $collapseDays
+        and length($days) == 1
+        and $days[0].day == 'MONDAY'
+        and $days[0].through == 'SUNDAY'}
+      {let $allWeekMessage: $wholeWeekMessage ?: 'All Week' /}
+      <div class="c-location-hours-details"
+        {if not $hideSchemaOrg ?: false}
+          {sp}
+          {call .schemaHours data="$days[0]"}
+            {param collapseDays: $collapseDays /}
+          {/call}
+        {/if}
+        >
+        {if length($days[0].intervals) > 0}
+          {foreach $interval in $days[0].intervals}
+            {call .interval data="$interval"}
+              {param allDayMessage}
+                {$allDayMessage}, {$allWeekMessage}
+              {/param}
+              {param twentyFourHourClock: $twentyFourHourClock /}
+            {/call}
+          {/foreach}
+        {else}
+          Closed {$allWeekMessage}
+        {/if}
+      </div>
+    {else}
+      <table class="c-location-hours-details">
+        <tbody>
+          {foreach $d in $days}
+            {let $dayHours: $d.holidayHours ?: $d.intervals /}
+            <tr class="c-location-hours-details-row {if $highlightToday or $highlightTodayBackground or not $disableOpenUntil}js-day-of-week-row{/if} {if $highlightToday}highlight-text{/if} {if $highlightTodayBackground}highlight-background{/if}"
+                  {if $highlightToday or $highlightTodayBackground or not $disableOpenUntil}
+                    {sp}
+                    data-day-of-week-start-index="{$dayIndexes[$d.day]}"
+                    {sp}
+                    data-day-of-week-end-index="
+                      {if $collapseDays and $d.through}
+                        {$dayIndexes[$d.through]}
+                      {else}
+                        {$dayIndexes[$d.day]}
+                      {/if}"
+                 {/if}
+                 {if not $hideSchemaOrg ?: false}
+                   {sp}
+                   {call .schemaHours data="$d"}
+                     {param collapseDays: $collapseDays /}
+                   {/call}
+                {/if}>
+              <td class="c-location-hours-details-row-day">
+                  {call .localize_day_of_week data="all"}
+                    {param dayOfWeek: $d.day /}
+                  {/call}
+                  {if $collapseDays and strlen($d.through ?:'') > 0}
+                    {sp}-{sp}
+                    {call .localize_day_of_week data="all"}
+                      {param dayOfWeek: $d.through /}
+                    {/call}
+                  {/if}
+              </td>
+              <td class="c-location-hours-details-row-intervals">
+                {if length($dayHours) == 0}
+                  {msg desc=""}
+                    Closed
+                  {/msg}
+                {else}
+                  {foreach $interval in $dayHours}
+                    {let $disable: length($dayHours) > 1 ? true : $disableOpenUntil /}
+                    {call .interval data="$interval"}
+                      {param allDayMessage: $allDayMessage /}
+                      {param twentyFourHourClock: $twentyFourHourClock /}
+                      {param parentClass: 'c-location-hours-details-row' /}
+                      {param disableOpenUntil: $disable /}
+                    {/call}
+                  {/foreach}
+                {/if}
+              </td>
+            </tr>
+          {/foreach}
+        </tbody>
+      </table>
+    {/if}
+  </div>
+{/template}
+
+/**
+ * @param start
+ * @param end
+ * @param allDayMessage
+ * @param? twentyFourHourClock
+ * @param parentClass
+ * @param? openUntilMidnightMessage
+ * @param? openUntilMessage
+ * @param? closedAtMessage
+ * @param? disableOpenUntil
+ */
+{template .interval}
+  {let $openUntilMidnightText}
+    {if strlen($openUntilMidnightMessage ?: '') > 0}
+      {$openUntilMidnightMessage |noAutoescape}
+    {else}
+      {msg desc=""}
+        Open until midnight
+      {/msg}
+    {/if}
+  {/let}
+  {let $openUntilText}
+    {if strlen($openUntilMessage ?: '') > 0}
+      {$openUntilMessage |noAutoescape}
+    {else}
+      {msg desc=""}
+        Open until
+      {/msg}
+    {/if}
+  {/let}
+  {let $closedAtText}
+    {if strlen($closedAtMessage ?: '') > 0}
+      {$closedAtMessage |noAutoescape}
+    {else}
+      {msg desc=""}
+        Closed at
+      {/msg}
+    {/if}
+  {/let}
+  <div class="{$parentClass}-intervals-instance {if not $disableOpenUntil}
+              js-location-hours-interval-instance"
+       data-24-hour-clock="{$twentyFourHourClock ?: false}"
+       data-open-interval-start="{$start}"
+       data-open-interval-end="{$end}"
+       data-midnight-text="{$openUntilMidnightText}"
+       data-open-until-text="{$openUntilText}"
+       data-close-at-text="{$closedAtText}{/if}">
+    {if $start == 0 and $end == 0}
+      {$allDayMessage ?: 'Open 24 Hours'}
+    {else}
+      {if $twentyFourHourClock}
+        <span class="{$parentClass}-intervals-instance-open">
+          {timef('15:04', floor($start))}
+        </span>
+        <span class="{$parentClass}-intervals-instance-separator" aria-label="To">
+          {sp}-{sp}
+        </span>
+        <span class="{$parentClass}-intervals-instance-close">
+          {timef('15:04', floor($end))}
+        </span>
+      {else}
+        <span class="{$parentClass}-intervals-instance-open">
+          {timef('3:04 PM', floor($start))}
+        </span>
+        <span class="{$parentClass}-intervals-instance-separator" aria-label="To">
+          {sp}-{sp}
+        </span>
+        <span class="{$parentClass}-intervals-instance-close">
+          {timef('3:04 PM', floor($end))}
+        </span>
+      {/if}
+    {/if}
+  </div>
+{/template}
+
+/**
+ * @param hours
+ * @param? showOpenToday
+ * @param? highlightToday
+ */
+{template .hours_data}
+  {sp}
+  data-days='{$hours.days |json}'
+  data-showOpenToday='{$showOpenToday ?: false |json}'
+  data-highlightToday='{$highlightToday ?: false |json}'
+{/template}
+/**
+ * @param? openTodayMessage
+ */
+{template .open_today}
+  <div class="c-location-hours-details-opentoday js-opentoday">
+    {if $openTodayMessage}
+      {$openTodayMessage |noAutoescape}
+    {else}
+      {msg desc=""}
+        Open Today
+      {/msg}
+    {/if}
+  </div>
+{/template}
+
+/**
+ * @param dayOfWeek
+ * @param? dayOfWeekMapper
+ */
+{template .localize_day_of_week}
+  {let $mon}
+    {msg desc=""}
+      Monday
+    {/msg}
+  {/let}
+  {let $tue}
+    {msg desc=""}
+      Tuesday
+    {/msg}
+  {/let}
+  {let $wed}
+    {msg desc=""}
+      Wednesday
+    {/msg}
+  {/let}
+  {let $thu}
+    {msg desc=""}
+      Thursday
+    {/msg}
+  {/let}
+  {let $fri}
+    {msg desc=""}
+      Friday
+    {/msg}
+  {/let}
+  {let $sat}
+    {msg desc=""}
+      Saturday
+    {/msg}
+  {/let}
+  {let $sun}
+    {msg desc=""}
+      Sunday
+    {/msg}
+  {/let}
+  {let $formattableDays: $dayOfWeekMapper ?:
+    [
+    'MONDAY':    $mon,
+    'TUESDAY':   $tue,
+    'WEDNESDAY': $wed,
+    'THURSDAY':  $thu,
+    'FRIDAY':    $fri,
+    'SATURDAY':  $sat,
+    'SUNDAY':    $sun
+    ]
+  /}
+  {$formattableDays[$dayOfWeek] ?: $dayOfWeek |noAutoescape}
+{/template}
+
+/*
+{call components.hours.schemaHours}
+  {param day: /}
+  {param intervals: /}
+
+  {param through: /}
+{/call}
+*/
+
+/**
+ * @param day
+ * @param? through
+ * @param? collapseDays
+ * @param intervals
+ */
+{template .schemaHours}
+  {let $weekschema: [
+    'MONDAY':    'Mo',
+    'TUESDAY':   'Tu',
+    'WEDNESDAY': 'We',
+    'THURSDAY':  'Th',
+    'FRIDAY':    'Fr',
+    'SATURDAY':  'Sa',
+    'SUNDAY':    'Su'
+  ]/}
+  {if $intervals}
+    {if length($intervals) > 0}
+      {let $interval: $intervals[0]/}
+      {if $interval and ($interval.start or $interval.end)}
+        itemprop="openingHours" content="
+          {$weekschema[$day]}{if $through and $collapseDays}-{$weekschema[$through]}{/if}{sp}
+          {foreach $interval in $intervals}
+            {timef('15:04', $interval.start)}-{timef('15:04', $interval.end)}
+            {if not isLast($interval)}
+              {sp}
+            {/if}
+          {/foreach}
+        "
+      {elseif isNonnull($interval.start) and isNonnull($interval.end)} // start & end are 0 so open 24 hours
+        itemprop="openingHours" content="{$weekschema[$day]}{if $through}-{$weekschema[$through]}{/if}{sp}All Day"
+      {/if}
+    {else}
+      itemprop="openingHours" content="{$weekschema[$day]}{if $through}-{$weekschema[$through]}{/if}{sp}Closed"
+    {/if}
+  {/if}
+{/template}
+
+/*
+{call components.hours.location_hours_today}
+  {param hours: /}
+
+  {param open24HoursMessage: /}
+  {param hourIntervalSeparator: /}
+  {param hideSchemaOrg: /}
+{/call}
+*/
+
+/**
+ * Location hours today component
+ * @param hours
+ * @param? open24HoursMessage
+ * @param? hourIntervalSeparator
+ * @param? hideSchemaOrg
+ * @param? openTodayMessage
+ * @param? closedTodayMessage
+ * @param? collapseDays
+ * @param? allWeekMessage
+ * @param? disableOpenUntil passthrough to intervals
+ * @param? openUntilMidnightMessage passthrough to intervals
+ * @param? openUntilMessage passthrough to intervals
+ * @param? closedAtMessage passthrough to intervals
+ * @param? twentyFourHourClock passthrough to intervals
+ */
+{template .location_hours_today}
+  {if $hours}
+    {let $dayIndexes: [
+      'MONDAY': 0,
+      'TUESDAY': 1,
+      'WEDNESDAY': 2,
+      'THURSDAY': 3,
+      'FRIDAY': 4,
+      'SATURDAY': 5,
+      'SUNDAY': 6
+      ]
+    /}
+    <div class="c-location-hours-today js-location-hours"
+      {call .hours_data data="all" /}>
+
+      {let $days: $collapseDays ? collapseDays($hours.days) : $hours.days /}
+
+      {foreach $d in $days }
+        {let $dayHours: $d.holidayHours ?: $d.intervals /}
+        {let $disable: length($dayHours) > 1 ? true : $disableOpenUntil /}
+        <div class="c-location-hours-today-details-row js-day-of-week-row"
+             data-day-of-week-start-index="{$dayIndexes[$d.day]}"
+             data-day-of-week-end-index="{$dayIndexes[$d.day]}"
+          {if not $hideSchemaOrg ?: false}
+            {sp}
+            {call .schemaHours}
+              {param day: $d.day /}
+              {param intervals: $dayHours /}
+              {param through: $d.through /}
+              {param collapseDays: $collapseDays /}
+            {/call}
+          {/if}
+          >
+          {let $otMessage}
+            {if $disable}
+              {if $openTodayMessage}
+                {$openTodayMessage}
+              {else}
+                {msg desc=""}
+                  Open Today
+                {/msg}
+                :
+                {sp}{sp}
+              {/if}
+            {/if}
+          {/let}
+          {let $ctMessage}
+            {if $closedTodayMessage}
+              {$closedTodayMessage}
+            {else}
+              {msg desc=""}
+                Closed Today
+              {/msg}
+              {sp}{sp}
+            {/if}
+          {/let}
+          <span class="c-location-hours-today-day-status">
+            {if length($dayHours) == 0}
+              {$ctMessage |noAutoescape}
+            {else}
+              {$otMessage |noAutoescape}
+            {/if}
+          </span>
+          {sp}
+          {call .location_hours_today_intervals data="all"}
+            {param dayHours: $dayHours /}
+            {param disableOpenUntil: $disable /}
+          {/call}
+          {if length($days) == 1
+            and $days[0].day == 'MONDAY'
+            and $days[0].through == 'SUNDAY'}
+            , {$allWeekMessage ?: 'All Week'}
+          {/if}
+        </div>
+      {/foreach}
+    </div>
+  {/if}
+{/template}
+
+/**
+ * @param open24HoursMessage
+ * @param? hourIntervalSeparator
+ * @param dayHours
+ * @param? disableOpenUntil passthrough to intervals
+ * @param? openUntilMidnightMessage passthrough to intervals
+ * @param? openUntilMessage passthrough to intervals
+ * @param? closedAtMessage passthrough to intervals
+ * @param? twentyFourHourClock passthrough to intervals
+ */
+{template .location_hours_today_intervals}
+  <div class="c-location-hours-today-day-hours">
+    {foreach $interval in $dayHours}
+      {if index($interval) != 0}
+        <div class="c-location-hours-today-day-hours-interval-separator">{$hourIntervalSeparator ?: ',&nbsp;' |noAutoescape}</div>
+      {/if}
+      {call .interval data="$interval all"}
+        {param allDayMessage: $open24HoursMessage /}
+        {param parentClass: 'c-location-hours-today-day-hours' /}
+        {param openUntilMidnightMessage: $openUntilMidnightMessage /}
+        {param openUntilMessage: $openUntilMessage /}
+        {param closedAtMessage: $closedAtMessage /}
+        {param disableOpenUntil: $disableOpenUntil /}
+        {param twentyFourHourClock: $twentyFourHourClock /}
+      {/call}
+    {/foreach}
+  </div>
+{/template}

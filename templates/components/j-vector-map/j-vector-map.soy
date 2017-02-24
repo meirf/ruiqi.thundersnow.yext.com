@@ -1,0 +1,70 @@
+{namespace components.j_vector_map}
+
+/**
+ * J vector map component
+ * @param id
+ * @param keys
+ * @param baseUrl
+ * @param fillColor
+ * @param seriesFillColor
+ * @param strokeColor
+ * @param hoverFillColor
+ * @param jVectorMapKeyName
+ * @param? keyPrefix
+ * @param? autoRender
+ */
+{template .map}
+  {call .map_markup data="all" /}
+  {call components.util.data_for_js}
+    {param id}
+      {$id}-data
+    {/param}
+    {param content}
+      {call .keys_to_json data="all" /}
+    {/param}
+    {param prerenderedJson: true /}
+  {/call}
+{/template}
+
+/**
+ * map_markup
+ * @param id
+ * @param fillColor
+ * @param seriesFillColor
+ * @param strokeColor
+ * @param hoverFillColor
+ * @param jVectorMapKeyName
+ * @param? keyPrefix
+ * @param? autoRender
+ */
+{template .map_markup}
+  <div id="{$id}"
+       class="js-j-vector-map c-j-vector-map"
+       data-source="{$id}-data"
+       data-fill-color="{$fillColor}"
+       data-series-color="{$seriesFillColor}"
+       data-stroke-color="{$strokeColor}"
+       data-hover-color="{$hoverFillColor}"
+       data-key-name="{$jVectorMapKeyName}"
+       data-auto-render="{$autoRender ?: true }"
+       {if $keyPrefix}
+       data-prefix="{$keyPrefix}"
+       {/if}
+       ></div>
+{/template}
+
+/**
+ * keys_to_json
+ * @param keys
+ * @param baseUrl
+ */
+{template .keys_to_json}
+  [
+    {foreach $key in $keys}
+      {lb}
+        "key" : "{$key.key}",
+        "fullUrl" : "{$baseUrl}{$key.url}"
+      {rb}{if not isLast($key)},{/if}
+    {/foreach}
+  ]
+{/template}

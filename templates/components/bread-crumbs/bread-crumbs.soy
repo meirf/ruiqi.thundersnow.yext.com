@@ -1,0 +1,76 @@
+{namespace components}
+
+/*
+{call components.bread_crumbs}
+  {param base: /}
+  {param crumbNames: /}
+  {param crumbUrls: /}
+
+  {param crumbBaseName: /}
+  {param crumbSeparator: /}
+  {param hideSchema: /}
+{/call}
+*/
+
+/**
+ * Bread crumbs component
+ * @param baseUrl Passthrough
+ * @param crumbNames Passthrough
+ * @param crumbUrls Passthrough
+ * @param? crumbBaseName The first entry in the crumb list
+ * @param? hideSchema
+ * @param? abbrState
+ */
+{template .bread_crumbs}
+  {let $abbr: $abbrState ?: true /}
+
+  <nav class="c-bread-crumbs">
+    <ol class="c-bread-crumbs-list"{if not $hideSchema} itemscope itemtype="http://schema.org/BreadcrumbList"{/if}>
+      {foreach $name in $crumbNames}
+        <li class="c-bread-crumbs-item"
+            {if not $hideSchema and not isLast($name)}
+            {sp}itemscope
+            {sp}itemprop="itemListElement"
+            {sp}itemtype="http://schema.org/ListItem"
+            {/if}>
+          {if not isLast($name)}
+            <a{if not $hideSchema} itemprop="item"{/if} href="{$baseUrl}{$crumbUrls[index($name)]}">
+          {/if}
+            <span class="c-bread-crumbs-name"{if not $hideSchema and not isLast($name)} itemprop="name" {/if}>
+              {if isFirst($name)}
+                {if $crumbBaseName}
+                  {$crumbBaseName}
+                {else}
+                  {msg desc=""}
+                    Locations
+                  {/msg}
+                {/if}
+              {else}
+                {$name|abbr:$abbr}
+              {/if}
+            </span>
+          {if not isLast($name)}
+            </a>
+          {/if}
+          {if not $hideSchema and not isLast($name)}
+            //Google Example found at https://developers.google.com/structured-data/breadcrumbs is 1 based
+            <meta itemprop="position" content="{index($name) + 1}" />
+          {/if}
+        </li>
+      {/foreach}
+    </ol>
+  </nav>
+{/template}
+
+/**
+ * Bread crumbs component
+ * @param baseUrl Passthrough
+ * @param crumbNames Passthrough
+ * @param crumbUrls Passthrough
+ * @param? crumbBaseName The first entry in the crumb list
+ */
+{template .bread_crumbs_no_schema}
+  {call .bread_crumbs data="all"}
+    {param hideSchema: true /}
+  {/call}
+{/template}
