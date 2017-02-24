@@ -82,7 +82,54 @@
                {$key.key}
               {/if}
               ({$key.count})
-            </li>
+              <p/>
+              {let $loc: $key.loc /}
+              <div class="grid__item column--4 grid__item-nobg grid__item-autoheight">
+                <a href="{$baseUrl}{$key.url}"
+                   class="location-list-title-link">
+                  <h2 class="location-list-title">
+                    {call common.helpers.location_name data="$loc" /}
+                  </h2>
+                </a>
+                {call components.address data="$loc"}
+                  {param stateAbbr: true /}
+                  {param schemaOrg: false /}
+                {/call}
+                {call components.hours.location_hours_today data="$loc" /}
+                {let $local}
+                  {foreach $phone in $loc.phones}
+                    {if $phone.type == 'LOCAL'}
+                      1
+                    {/if}
+                  {/foreach}
+                {/let}
+                {let $hasLocal: strlen($local ?: '') > 0 /}
+                {let $formatForLocaleByCountry: [
+                  'en': ['US': 'NATIONAL'],
+                  'en-gb': ['GB': 'NATIONAL']
+                  ]
+                /}
+                {let $phoneFormat: $formatForLocaleByCountry[$locale]?[$loc.country]?: 'INTERNATIONAL' /}
+                {if $hasLocal}
+                  {call components.phones_with_include data="$loc"}
+                    {param includeKeys: ['LOCAL'] /}
+                    {param labelMap: ['LOCAL': ''] /}
+                    {param format: $phoneFormat /}
+                  {/call}
+                {else}
+                  {call components.phones_with_include data="$loc"}
+                    {param includeKeys: ['MAIN'] /}
+                    {param labelMap: ['MAIN': ''] /}
+                    {param format: $phoneFormat /}
+                  {/call}
+                {/if}
+
+                <div class="location-list-links">
+                  {call components.maps.get_directions data="$loc" /}
+                  {call common.helpers.uber_button data="$loc" /}
+                </div>
+              </div>
+         </li>
         {/foreach}
       </ul>
   {call helpers.footer data="all"/}
