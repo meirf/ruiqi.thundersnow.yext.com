@@ -35,6 +35,7 @@
  * @param? listings
  * @param uber
  * @param reviews
+ * @param urls
  */
 {template .default}
   <h3>Reviews</h3>
@@ -123,6 +124,9 @@
 
     <h3>Listings</h3>
     <p>{$listings}</p>
+
+    <h3>URLS</h3>
+    <p>{$urls}</p>
 
   {call helpers.footer data="all"/}
 {/template}
