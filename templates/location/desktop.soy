@@ -127,9 +127,9 @@
 
     <h3>URLS</h3>
     <p>{$urls}</p>
-    <p>{$urls['external']}</p>
-    <p>{$urls['external']['displayUrl']}</p>
-    
+    {if $urls.external}
+    <p>{$urls.external.displayUrl}</p>
+    {/if}    
 
   {call helpers.footer data="all"/}
 {/template}
