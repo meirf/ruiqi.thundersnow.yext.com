@@ -2,9 +2,9 @@
 	"configVersion": "1",
 	"deviceDetected": false,
 	"https": false,
-	"liveSite": false,
+	"liveSite": true,
 	"locales": ["en","es","es_MX","it"],
-	"templateVersion": 5,
+	"templateVersion": 3,
 	"features": [
 		{
 			"name": "Index",
