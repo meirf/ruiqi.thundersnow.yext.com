@@ -87,7 +87,7 @@
 				"queryParam": "q",
 				"locationScopeOverride": {
 					"savedSearch": "Japan"
-				},
+				}
 			}
 		},
 		{
