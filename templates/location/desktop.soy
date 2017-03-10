@@ -37,12 +37,9 @@
  * @param reviews
  * @param urls
  * @param healthcare
+ * @param types
  */
 {template .default}
-  <h3>Reviews</h3>
-  <p>{$reviews}</p>
-  <h3>Uber</h3>
-  <p>{$uber}<p>
   {call helpers.header data="all"}
       {param title: $name/}
   {/call}
@@ -56,6 +53,13 @@
       <li>{$postalCode}</li>
       <li>{$country} - {$countryName}</li>
     </ul>
+
+    <h3>Reviews</h3>
+    <p>{$reviews}</p>
+    <h3>Uber</h3>
+    <p>{$uber}<p>
+    <h3>Location Types</h3>
+    <p>{$types}</p>
 
     <h3>Phone</h3>
     <p>{$phone}</p>
