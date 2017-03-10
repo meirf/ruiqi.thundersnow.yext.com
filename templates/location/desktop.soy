@@ -36,8 +36,8 @@
  * @param uber
  * @param reviews
  * @param urls
- * @param healthcare
- * @param types
+ * @param? healthcare
+ * @param? types
  */
 {template .default}
   {call helpers.header data="all"}
@@ -58,8 +58,10 @@
     <p>{$reviews}</p>
     <h3>Uber</h3>
     <p>{$uber}<p>
+    {if $types}
     <h3>Location Types</h3>
     <p>{$types}</p>
+    {/if}
 
     <h3>Phone</h3>
     <p>{$phone}</p>
