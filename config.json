@@ -80,7 +80,7 @@
 		},
 		{
 			"name": "Store Autocomplete",
-			"search": {
+			"autocomplete": {
 				"locationPageSet": "Locations",
 				"urlTemplate": "desktop.urls.storeautocomplete",
 				"fields": [{
