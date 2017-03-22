@@ -79,6 +79,18 @@
 			}
 		},
 		{
+			"name": "Store Autocomplete",
+			"search": {
+				"locationPageSet": "Locations",
+				"urlTemplate": "desktop.urls.storeautocomplete",
+				"fields": [{
+					"field": "Name",
+					"param": "name",
+					"mode": "EQUALS"
+				}]
+			}
+		},
+		{
 			"name": "Bar Locator",
 			"search": {
 				"locationPageSet": "Bars",
