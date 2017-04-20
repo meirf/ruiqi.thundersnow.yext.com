@@ -82,7 +82,6 @@
 			"name": "Store Autocomplete",
 			"autocomplete": {
 				"urlTemplate": "desktop.urls.storeautocomplete",
-				"locationPageSet": "Locations",
 				"fields": [{
 					"field": "Name",
 					"param": "name",
