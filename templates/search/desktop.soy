@@ -11,7 +11,7 @@
  * @param resultsPerPage
  * @param locale
  * @param isPrimaryLocale
- * @param? notExist
+ * @param? requestGeocoded
  */
 {template .default}
   {call helpers.header data="all"}
@@ -23,8 +23,9 @@
   <p>Result count: {$resultCount}</p>
   <p>Results per page: {$resultsPerPage}</p>
   <p>Current page: {$currentPage}</p>
-  {$notExist}
   {call helpers.locations data="all" /}
+
+  <p>Geocoded: {$requestGeocoded}</p>
 
   {call helpers.footer data="all"/}
 {/template}
