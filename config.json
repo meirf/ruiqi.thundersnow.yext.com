@@ -54,6 +54,13 @@
 				"outputFormat": ["Html", "Json"],
 				"urlAliases": [
 					"desktop.urls.locationPageSet1alias1"
+				],
+				"alternates": [
+					{
+						"locationPageSet": "Locations Alternate",
+						"fieldName": "alternate",
+						"displayName": "Alternate"
+					},
 				]
 			}
 		},
