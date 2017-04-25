@@ -44,6 +44,17 @@
   {call helpers.header data="all"}
       {param title: $name/}
   {/call}
+  {if $alternates}
+    <h3>Alternates</h3>
+    <ul>
+      {foreach $altField in keys($alternates)}
+        <li>
+          <a href="{$baseUrl}{$alternates[$altField]}">{$altField}</a>
+        </li>
+      {/foreach}
+    </ul>
+  {/if}
+
     <p>{$description}</p>
     <h3>Address</h3>
     <ul>
@@ -118,17 +129,6 @@
       </li>
     {/foreach}
     </ul>
-
-    {if $alternates}
-      <h3>Alternates</h3>
-      <ul>
-        {foreach $altField in keys($alternates)}
-          <li>
-            <a href="{$baseUrl}{$alternates[$altField]}">$altField</a>
-          </li>
-        {/foreach}
-      </ul>
-    {/if}
 
     <h3>Calendars</h3>
     <p>{$calendars}</p>
