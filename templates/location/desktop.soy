@@ -38,6 +38,7 @@
  * @param urls
  * @param? healthcare
  * @param? types
+ * @param alternates
  */
 {template .default}
   {call helpers.header data="all"}
@@ -117,6 +118,17 @@
       </li>
     {/foreach}
     </ul>
+
+    {if $alternates}
+      <h3>Alternates</h3>
+      <ul>
+        {foreach $altField in keys($alternates)}
+          <li>
+            <a href="{$baseUrl}{$alternates[$altField]}">$altField</a>
+          </li>
+        {/foreach}
+      </ul>
+    {/if}
 
     <h3>Calendars</h3>
     <p>{$calendars}</p>
