@@ -53,7 +53,7 @@
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
 				"urlAliases": [
-					"desktop.urls.locationPageSet1alias1",
+					"desktop.urls.locationPageSet1alias1"
 				]
 			}
 		},
