@@ -105,7 +105,12 @@
             "name": "Locator Category",
             "param": "choices"
           }
-        ]
+        ],
+				"searchFields": [{
+					"field": "Name",
+					"param": "name",
+					"mode": "EQUALS"
+				}]
 			}
 		},
 		{
