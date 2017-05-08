@@ -126,7 +126,7 @@
 					"mode": "CONTAINS"
 				},
 				{
-					"field": "YayNay",
+					"field": "Yay Nay",
 					"param": "yaynay",
 					"mode": "EQUALS"
 				}]
