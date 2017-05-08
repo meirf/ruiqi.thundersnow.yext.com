@@ -104,12 +104,26 @@
           {
             "name": "Locator Category",
             "param": "choices"
+          },
+					{
+            "name": "TestString",
+            "param": "test"
           }
         ],
 				"searchFields": [{
 					"field": "Name",
 					"param": "name",
 					"mode": "EQUALS"
+				},
+				{
+					"field": "Address",
+					"param": "address",
+					"mode": "CONTAINS"
+				},
+				{
+					"field": "Custom String",
+					"param": "custom",
+					"mode": "CONTAINS"
 				}]
 			}
 		},
