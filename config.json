@@ -124,6 +124,11 @@
 					"field": "Custom String",
 					"param": "custom",
 					"mode": "CONTAINS"
+				},
+				{
+					"field": "YayNay",
+					"param": "yaynay",
+					"mode": "EQUALS"
 				}]
 			}
 		},
