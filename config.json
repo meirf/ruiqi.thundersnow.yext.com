@@ -89,7 +89,8 @@
 				"locationPageSet": "Locations",
 				"urlTemplate": "desktop.urls.storelocator",
 				"template": "desktop.search.default",
-				"queryParam": "q"
+				"queryParam": "q",
+				"disableReverseIpSearch": true
 			}
 		},
 		{
