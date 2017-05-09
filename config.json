@@ -90,7 +90,12 @@
 				"urlTemplate": "desktop.urls.storelocator",
 				"template": "desktop.search.default",
 				"queryParam": "q",
-				"disableReverseIpSearch": true
+				"disableReverseIpSearch": true,
+				"searchFields": [{
+					"field": "Name",
+					"param": "name",
+					"mode": "EQUALS"
+				}]
 			}
 		},
 		{
