@@ -3,11 +3,15 @@
 /**
  * @param isHttps
  * @param baseUrl
+ * @param siteAttributes
  */
 {template .index}
   {call helpers.header data="all"}
       {param title: 'Index'/}
   {/call}
+      {if $siteAttributes}
+        $siteAttributes
+      {/if}
       <h3>Directories</h3>
       <ul>
         <li><a href="{$baseUrl}/directory1/index.html">Directory 1 (States)</a></li>
