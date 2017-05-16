@@ -102,6 +102,7 @@
 			"name": "Store Locator V2",
 			"search": {
 				"useNewSearcher": true,
+        "disableReverseIpSearch": true,
 				"locationPageSet": "Locations",
 				"urlTemplate": "desktop.urls.storelocatorv2",
 				"template": "desktop.search.default",
