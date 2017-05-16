@@ -1,0 +1,171 @@
+{namespace desktop.urls}
+
+/**
+ * Helper template to insert locale for international pages
+ * @param url
+ * @param locale
+ */
+{template .urlWithLocale}
+	{if $locale != 'en'}
+		{$locale|casing:'lower'}/
+	{/if}
+	{$url |noAutoescape}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .index}
+ {call desktop.urls.urlWithLocale data="all"}{param url}/index.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .static}
+ {call desktop.urls.urlWithLocale data="all"}{param url}/static{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .geocodeip}
+ {call desktop.urls.urlWithLocale data="all"}{param url}/geocode-ip{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .reversegeocode}
+{call desktop.urls.urlWithLocale data="all"}{param url}/reverse-geocode{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .xmlSitemap}
+{call desktop.urls.urlWithLocale data="all"}{param url}/sitemap.xml{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .htmlSitemap}
+{call desktop.urls.urlWithLocale data="all"}{param url}/sitemap.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ * @param id
+ * @param state
+ * @param city
+ * @param address1
+ * @param country
+ * @param? isCollision
+ */
+{template .locationPageSet1}
+{call desktop.urls.urlWithLocale data="all"}{param url}/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ * @param id
+ * @param state
+ * @param city
+ * @param address1
+ * @param country
+ * @param? isCollision
+ * @param customByName
+ */
+{template .locationPageSet1alias1}
+{call desktop.urls.urlWithLocale data="all"}{param url}/alias1/lps1/{if $customByName['TestString']}{ $customByName['TestString']|latin:true|other:'-'|spaces:'-'|casing:'lower'}-{/if}{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ * @param id
+ * @param state
+ * @param city
+ * @param address1
+ * @param country
+ * @param? isCollision
+ */
+{template .locationPageSet1alias2}
+{call desktop.urls.urlWithLocale data="all"}{param url}/alias2/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ * @param id
+ * @param name
+ * @param? isCollision
+ */
+{template .bars}
+{call desktop.urls.urlWithLocale data="all"}{param url}/bars/{$name|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .barlocator}
+{call desktop.urls.urlWithLocale data="all"}{param url}/barsearch.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .storelocator}
+{call desktop.urls.urlWithLocale data="all"}{param url}/search.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .storelocatorv2}
+{call desktop.urls.urlWithLocale data="all"}{param url}/searchv2.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .storeautocomplete}
+{call desktop.urls.urlWithLocale data="all"}{param url}/autocomplete.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .directory1State}
+{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/index.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ * @param state
+ */
+{template .directory1City}
+{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ * @param state
+ * @param city
+ */
+{template .directory1Locations}
+{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .directoryBarsLocations}
+{call desktop.urls.urlWithLocale data="all"}{param url}/bars/index.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ */
+{template .directoryBarsLocationsOverride}
+{call desktop.urls.urlWithLocale data="all"}{param url}/bars-override/index.html{/param}{/call}
+{/template}

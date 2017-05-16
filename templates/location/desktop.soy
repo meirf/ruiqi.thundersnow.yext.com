@@ -33,11 +33,28 @@
  * @param bios
  * @param nearbyLocations
  * @param? listings
+ * @param uber
+ * @param reviews
+ * @param urls
+ * @param? healthcare
+ * @param? types
+ * @param alternates
  */
 {template .default}
   {call helpers.header data="all"}
       {param title: $name/}
   {/call}
+  {if $alternates}
+    <h3>Alternates</h3>
+    <ul>
+      {foreach $altField in keys($alternates)}
+        <li>
+          <a href="{$baseUrl}{$alternates[$altField]}">{$altField}</a>
+        </li>
+      {/foreach}
+    </ul>
+  {/if}
+
     <p>{$description}</p>
     <h3>Address</h3>
     <ul>
@@ -48,6 +65,15 @@
       <li>{$postalCode}</li>
       <li>{$country} - {$countryName}</li>
     </ul>
+
+    <h3>Reviews</h3>
+    <p>{$reviews}</p>
+    <h3>Uber</h3>
+    <p>{$uber}<p>
+    {if $types}
+    <h3>Location Types</h3>
+    <p>{$types}</p>
+    {/if}
 
     <h3>Phone</h3>
     <p>{$phone}</p>
@@ -84,7 +110,25 @@
     <p>{$posts}</p>
 
     <h3>Products</h3>
-    <p>{$productLists}</p>
+    <ul>
+    {foreach $productList in $productLists}
+      <li>
+      <h4>{$productList.name}</h4>
+        <ul>
+          {foreach $section in $productList.sections}
+            <li>
+              <p>Section: {$section.description}</p>
+            <ul>
+              {foreach $item in $section.items}
+                <li>{$item.name}</li>
+              {/foreach}
+            </ul>
+            </li>
+           {/foreach}
+        </ul>
+      </li>
+    {/foreach}
+    </ul>
 
     <h3>Calendars</h3>
     <p>{$calendars}</p>
@@ -99,6 +143,18 @@
 
     <h3>Listings</h3>
     <p>{$listings}</p>
+
+    <h3>URLS</h3>
+    <p>{$urls}</p>
+    {if $urls.external}
+    <p>{$urls.external.displayUrl}</p>
+    {/if}
+
+    {if $healthcare}
+    <h3>Healthcare</h3>
+    <p>{$healthcare.firstName}</p>
+    <p>{$healthcare}</p>
+    {/if}
 
   {call helpers.footer data="all"/}
 {/template}

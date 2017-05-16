@@ -9,6 +9,7 @@
  * @param? isPrimaryLocale
  * @param? crumbNames Sorted list of breadcrumb names
  * @param? crumbUrls Sorted list of breadcrumb urls
+ * @param? featureId Feature name/id
  */
 {template .header}
   <!DOCTYPE html>
@@ -19,6 +20,11 @@
     <body>
       <h1>{$title}</h1>
       <p>isHttps? {$isHttps}</p>
+      {if $featureId}
+      <p>Feature: {$featureId}</p>
+      {else}
+      <p>No featureId</p>
+      {/if}
       {if $crumbNames}
       <h3>Crumbs</h3>
   	{foreach $name in $crumbNames}
@@ -57,7 +63,10 @@
 {template .locations}
       <ul>
       {foreach $location in $locations}
-      <li><a href="{$baseUrl}{$location.url}">{if $location.loc}{$location.loc.name}{else}{$location.name}{/if}</a></li>
+      <li>
+          <p><a href="{$baseUrl}{$location.url}">{if $location.loc}{$location.loc.name}{else}{$location.name}{/if}</a></p>
+          <p>{$location}</p>
+      </li>
       {/foreach}
       </ul>
 {/template}

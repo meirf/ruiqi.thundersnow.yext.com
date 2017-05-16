@@ -1,0 +1,470 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: src\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Label for a phone number that provides customer support
+#: id=6339479403470653878
+msgid "Customer Service:"
+msgstr "Customer Service:"
+
+#. Find a location.
+#: id=4580988005648117665
+msgid "Search"
+msgstr "Search"
+
+#. #-#-#-#-#  - (src)  #-#-#-#-#
+#. Link text that directs the user to a map to show where the location is and how to get there
+#. #-#-#-#-#  - (src)  #-#-#-#-#
+#. Link text that directs the user to a map to show where the location is and how to get there
+#. #-#-#-#-#  - (src)  #-#-#-#-#
+#.
+#. #-#-#-#-#  - (src)  #-#-#-#-#
+#.
+#. #-#-#-#-#  - (src)  #-#-#-#-#
+#. Link text that directs the user to a map to show where the location is and how to get there
+#. #-#-#-#-#  - (src)  #-#-#-#-#
+#. Link text that directs the user to a map to show where the location is and how to get there
+#: id=5950895346618553652
+msgid "Get Directions"
+msgstr "Calcola il percorso"
+
+#. Link text that directs the user to the location page for store information
+#: id=1468015720862673946
+msgid "View Details"
+msgstr "Maggiori dettagli"
+
+#.
+#: id=1413778527796351850
+msgid "Africa"
+msgstr "Africa"
+
+#.
+#: id=4370198043230243821
+msgid "America"
+msgstr "America"
+
+#.
+#: id=3345512471687795386
+msgid "Asia"
+msgstr "Asia"
+
+#.
+#: id=8350109327144196614
+msgid "Europe"
+msgstr "Europa"
+
+#.
+#: id=5761795283962861984
+msgid "Middle East"
+msgstr "Medio Oriente"
+
+#.
+#: id=3228811828827738441
+msgid "Oceania"
+msgstr "Oceania"
+
+#.
+#: id=2033238858280703988
+msgid "Women's Shoes"
+msgstr "Scarpe donna"
+
+#.
+#: id=9166223448363781120
+msgid "Women's Leather Goods"
+msgstr "Piccola pelletteria donna"
+
+#.
+#: id=5001004837720748037
+msgid "Women's Rtw"
+msgstr "Donna RTW"
+
+#.
+#: id=8027196318163102849
+msgid "Women's Silk And Accessories"
+msgstr "Seta e accessori donna"
+
+#.
+#: id=1639009186745754763
+msgid "Men's Shoes"
+msgstr "Scarpe uomo"
+
+#.
+#: id=5761617598708265521
+msgid "Men's Leather Goods"
+msgstr "Piccola pelletteria uomo"
+
+#.
+#: id=8278095151932312909
+msgid "Men's Ties And Accessories"
+msgstr "Cravatte e accessori uomo"
+
+#.
+#: id=7129652087269121038
+msgid "Men's Rtw"
+msgstr "Uomo RTW"
+
+#.
+#: id=2797180397024020098
+msgid "Kids"
+msgstr "Bambino"
+
+#.
+#: id=7662046079404448575
+msgid "Sunglasses"
+msgstr "Occhiali da sole"
+
+#.
+#: id=882941189702702235
+msgid "Fragrance"
+msgstr "Profumi"
+
+#.
+#: id=6492776236405138633
+msgid "Watches"
+msgstr "Orologi"
+
+#.
+#: id=3173127024803628583
+msgid "Fine Jewelry"
+msgstr "Gioielli in oro"
+
+#. Telephone
+#: id=5904062357982956190
+msgid "Tel"
+msgstr "Tel"
+
+#. Abbreviation of 'kilometers'
+#: id=6044256456943348938
+msgid "km"
+msgstr "km"
+
+#. Abbreviation of 'miles'
+#: id=5380734885525984829
+msgid "mi"
+msgstr "mi"
+
+#. Link text that directs the user to the store's main web page
+#: id=2821179408673282599
+msgid "Home"
+msgstr "Home"
+
+#. Link text that directs the user to the top of the current web page
+#: id=3428204039932102164
+msgid "Back to top"
+msgstr "Back to top"
+
+#.
+#: id=4022066031214545422
+msgid "Locations"
+msgstr "Negozi"
+
+#.
+#: id=2827984212740060090
+msgid "Read more"
+msgstr "Espandi"
+
+#.
+#: id=7216129782170445339
+msgid "Read less"
+msgstr "Riduci"
+
+#.
+#: id=818248703042672682
+msgid "Visit Site"
+msgstr "Visita il sito"
+
+#.
+#: id=8981724482694536509
+msgid "Directions"
+msgstr "Directions"
+
+#.
+#: id=4628776961570250524
+msgid "Store Hours:"
+msgstr "Orari del negozio:"
+
+#.
+#: id=6650138090390808
+msgid "Open 24 hours"
+msgstr "Aperto 24 ore"
+
+#.
+#: id=5632687096266177783
+msgid "Day of the Week"
+msgstr "Day of the Week"
+
+#.
+#: id=8070396816726827304
+msgid "Hours"
+msgstr "Hours"
+
+#.
+#: id=7860418101283165917
+msgid "Closed"
+msgstr "Chiuso"
+
+#.
+#: id=6307084383315366376
+msgid "Open until midnight"
+msgstr "Aperto fino alla mezzanotte"
+
+#.
+#: id=8828277235303377607
+msgid "Open until"
+msgstr "Aperto fino a"
+
+#.
+#: id=1985092179966731661
+msgid "Closed at"
+msgstr "Chiude alle"
+
+#.
+#: id=8050087808612352027
+msgid "Open Today"
+msgstr "Aperto oggi"
+
+#.
+#: id=8739442281958563044
+msgid "Monday"
+msgstr "Lunedì"
+
+#.
+#: id=9176037901730521018
+msgid "Tuesday"
+msgstr "Martedì"
+
+#.
+#: id=8798932904948432529
+msgid "Wednesday"
+msgstr "Mercoledì"
+
+#.
+#: id=1433683192825895947
+msgid "Thursday"
+msgstr "Giovedì"
+
+#.
+#: id=3730139500618908668
+msgid "Friday"
+msgstr "Venerdì"
+
+#.
+#: id=1830554030016307335
+msgid "Saturday"
+msgstr "Sabato"
+
+#.
+#: id=6950140976689343775
+msgid "Sunday"
+msgstr "Domenica"
+
+#.
+#: id=4651255016117941158
+msgid "Closed Today"
+msgstr "Chiuso oggi"
+
+#. Share information via email.
+#: id=7419704019640008953
+msgid "Share"
+msgstr "Condividi"
+
+#. Follow on Instagram.
+#: id=6018246591673612412
+msgid "Follow"
+msgstr "Seguici"
+
+#.
+#: id=3714400483609776128
+msgid "Share This Location"
+msgstr "Share This Location"
+
+#.
+#: id=4340944007474085518
+msgid "Nearby Locations"
+msgstr "Boutiques più vicine"
+
+#. Visit webpage.
+#: id=193225954404557427
+msgid "Go to Site"
+msgstr "Go to Site"
+
+#.
+#: id=2521670961404777544
+msgid "Today's Hours:"
+msgstr "Today's Hours:"
+
+#.
+#: id=114579801111215837
+msgid "Main Number"
+msgstr "Main Number"
+
+#.
+#: id=6556772568177944555
+msgid "Alternate Number"
+msgstr "Alternate Number"
+
+#. Mobile number.
+#: id=1002165214775409029
+msgid "Mobile"
+msgstr "Mobile"
+
+#.
+#: id=7429303956572021019
+msgid "Fax Number"
+msgstr "Fax Number"
+
+#.
+#: id=6074599755612986543
+msgid "TTY"
+msgstr "TTY"
+
+#.
+#: id=6340560915365485036
+msgid "Toll Free Number"
+msgstr "Toll Free Number"
+
+#.
+#: id=8415574471091351401
+msgid "Search by City, State, Zip..."
+msgstr "Search by City, State, Zip..."
+
+#. The title for the page that displays locations.
+#: id=5091338338143471753
+msgid ""
+"{BRAND_NAME} Boutiques in {META_GEOMODIFIER} | Shoes, Handbags, Belts, "
+"Accessories"
+msgstr "{BRAND_NAME} Boutiques in {META_GEOMODIFIER} | Shoes, Handbags, Belts, Accessories"
+
+#. The description for the page that displays locations
+#: id=955360887475846133
+msgid ""
+"Browse all {BRAND_NAME} boutiques in {META_GEOMODIFIER} to explore the new "
+"collections."
+msgstr "Browse all {BRAND_NAME} boutiques in {META_GEOMODIFIER} to explore the new collections."
+
+#.
+#: id=3108411916635648890
+msgid "Shop women's and men's shoes, ties and belts: perfection made in Italy."
+msgstr "Potrai acquistare scarpe da donna e da uomo, cravatte e cinture Made in Italy."
+
+#. Salvatore Ferragamo Boutiques
+#: id=4032667643251939943
+msgid "Boutiques"
+msgstr "Boutiques"
+
+#. The title for the page that displays locations.
+#: id=5671086145747051413
+msgid "All {BRAND_NAME} Boutiques | Shoes, Handbags, Belts, Accessories"
+msgstr "Tutte {BRAND_NAME} Boutiques | Scarpe, Borse, Cinture e Accessori"
+
+#. The description for the page that displays locations
+#: id=7356842979302383567
+msgid "Browse all {BRAND_NAME} boutiques to explore the new collections."
+msgstr "Browse all {BRAND_NAME} boutiques to explore the new collections."
+
+#.
+#: id=4827259591339144630
+msgid "México"
+msgstr "México"
+
+#. Title of the web page that uses the location name, city, state, and address.
+#: id=7367542155137569201
+msgid ""
+"{BRAND_NAME} in {ADDRESS_1} {CITY}, {STATE} | Shoes, Handbags, Belts, "
+"Accessories"
+msgstr "{BRAND_NAME} in {ADDRESS_1} {CITY}, {STATE} | Scarpe, Borse, Cinture e Accessori"
+
+#. Description of the web page that uses the location name, city, state, and address
+#: id=8542091349680624022
+msgid ""
+"Visit your local {BRAND_NAME} at {ADDRESS_1} in {CITY}, {STATE} to explore "
+"the new collections."
+msgstr "Visita la Nostra Boutique presso {ADDRESS_1} a {CITY}, {STATE} per esplorare la nuova collezione."
+
+#. About [Ferragamo New York]
+#: id=1726363342938046830
+msgid "About"
+msgstr "Informazioni su"
+
+#. Descriptor for the toll free number for customer support
+#: id=1576854692310514990
+msgid "Customer Care"
+msgstr "Customer Care"
+
+#. The title of a section that lists products carried at this store location
+#: id=201472838502726034
+msgid "At This Location"
+msgstr "In questo posto"
+
+#. Events at [Ferragamo New York]
+#: id=1247018347877648662
+msgid "Events at"
+msgstr "Eventi a"
+
+#.
+#: id=2070350043624928094
+msgid "Email Us"
+msgstr "Scrivi"
+
+#. Store hours for this location
+#: id=857364676078926106
+msgid "Opening Hours"
+msgstr "Orari di apertura"
+
+#. Title of the section that displays stores in the area
+#: id=4280027964300406605
+msgid "Nearby Boutiques"
+msgstr "Boutique più vicine"
+
+#. Placeholder text for a search bar to search for a store location
+#: id=3877268963481282652
+msgid "Search by City, State or Zip Code"
+msgstr "Cerca utilizzando la Città, lo Stato o il Codice Postale"
+
+#. Title for the web page where the user can search for nearby store locations
+#: id=1957375715446492953
+msgid ""
+"Find the nearest {BRAND_NAME} boutique near you | Shoes, Handbags, Belts, "
+"Accessories"
+msgstr "Cerca la boutique {BRAND_NAME} più vicina a te | Scarpe, borse, cinture e accessori."
+
+#. Description for the web page where the user can search for nearby store locations
+#: id=1616459902765324036
+msgid "Search {BRAND_NAME} Boutiques to explore the new collections."
+msgstr "Search {BRAND_NAME} Boutiques to explore the new collections."
+
+#. Title of the store locator web page
+#: id=6800342558980940996
+msgid "Boutique Locator"
+msgstr "Store Locator"
+
+#. Link text that directs the user to the web page that shows all store locations
+#: id=5609914362197754609
+msgid "View All Boutiques"
+msgstr "Tutte le Boutiques"
+
+#. X number of stores near a location-based query (ex a city name or a state).
+#: id=1208252474163771922 var=RESULT_COUNT_1
+msgid "1 store near"
+msgid_plural "{RESULT_COUNT_2} stores near"
+msgstr[0] "Negozio vicino"
+msgstr[1] "Negozi vicini"
+
+#. Button text that displays a list of all the store information of nearby stores
+#: id=7906458871395232033
+msgid "List"
+msgstr "Lista"
+
+#. Button text that displays a map showing all nearby store locations
+#: id=5813867925497374051
+msgid "Map"
+msgstr "Mappa"
+
+#. Message showing that this store location is open today
+#: id=7593555694782789615
+msgid "Open"
+msgstr "Open"

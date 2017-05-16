@@ -1,0 +1,113 @@
+{namespace components}
+
+/*
+{call components.address}
+  {param stateAbbr: /}
+  {param schemaOrg: /}
+  {param itemRefId: /}
+  {param linkToGetDirections: /}
+
+  {param address1: /}
+  {param address2: /}
+  {param city: /}
+  {param state: /}
+  {param postalCode: /}
+  {param country: /}
+{/call}
+*/
+
+/**
+ * Format a location address.
+ * Generates a formatted address based on the options
+ * specified as paramaters in the soy template call.
+ *
+ * Tag configuration:
+ * @param stateAbbr Abbreviate the state (region)? (true, false)
+ * @param schemaOrg Include schema.org tags? (true, false)
+ * @param? itemRefId an ID to use when referencing an address from an itemref attribute
+ * @param? linkToGetDirections
+ * @param? provider
+ *
+ * Location fields:
+ * @param address1 Contains the street address
+ * @param address2 Contains the second line of the street address
+ * @param city
+ * @param state The abbreviated format of a state
+ * @param stateName
+ * @param postalCode
+ * @param country Abbreviated format of a country
+ * @param countryName
+ * @param latitude
+ * @param longitude
+ * @param? listings
+ */
+{template .address}
+  {if $schemaOrg}
+    {call .geo_coordinates data="all" /}
+  {/if}
+
+  {let $itemScope}
+    {if $schemaOrg}
+      {if strlen($itemRefId ?: '')>0}
+        {sp}id="{$itemRefId}"
+      {/if}
+      {sp}itemscope itemtype="http://schema.org/PostalAddress" itemprop="address"
+    {/if}
+  {/let}
+  <address class="c-address"{$itemScope |noAutoescape} data-country="{$country}">
+    {if $linkToGetDirections}
+      <a href="{call components.maps.get_directions_url data="all"/}"
+         data-ga-category="Get Directions/Location Address"
+         class="c-address-get-directions-link"
+         target="_blank"
+         rel="nofollow">
+    {/if}
+    <span class="c-address-street"{if $schemaOrg} itemprop="streetAddress"{/if}>
+      <span class="c-address-street-1">{$address1}{sp}</span>
+      {if $address2}
+        <span class="c-address-street-2">{$address2}{sp}</span>
+      {/if}
+    </span>
+    {if $city}
+      <span class="c-address-city">
+        <span {if $schemaOrg}itemprop="addressLocality"{/if}>{$city}</span>
+        {if $state or $postalCode}
+          <span class="c-address-city-comma">,</span>
+        {/if}
+      </span>{sp}
+    {/if}
+    {if $state and $country != 'GB'}
+      {let $abbreviated: $stateAbbr and $state != $stateName /}
+      <{if $abbreviated}abbr title="{$stateName}" aria-label="{$stateName}"{else}span{/if}
+       {sp}class="c-address-state" {if $schemaOrg}itemprop="addressRegion"{/if}>
+          {$state |stateAbbr:$stateAbbr}
+      </{$abbreviated ? 'abbr': 'span'}>{sp}
+    {/if}
+    {if $postalCode}
+      <span class="c-address-postal-code" {if $schemaOrg}itemprop="postalCode"{/if}> {$postalCode}</span>
+    {/if}
+    {sp}
+    <{if $country != $countryName}abbr title="{$countryName}" aria-label="{$countryName}"{else}span{/if}
+      {sp}class="c-address-country-name c-address-country-{$country |slugify}"
+      {if $schemaOrg}{sp}itemprop="addressCountry"{/if}
+    >
+      {$countryName}
+    </{$country != $countryName ? 'abbr': 'span'}>
+    {if $linkToGetDirections}
+      </a>
+    {/if}
+  </address>
+{/template}
+
+/**
+ * Pulls geo schema tag info
+ *
+ * @param latitude
+ * @param longitude
+ */
+{template .geo_coordinates}
+  <span class="coordinates" itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+    <meta itemprop="latitude" content="{$latitude}">
+    <meta itemprop="longitude" content="{$longitude}">
+  </span>
+{/template}

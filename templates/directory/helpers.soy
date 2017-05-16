@@ -1,0 +1,39 @@
+{namespace directory}
+
+
+/**
+ * Skips a directory level if there is only one location by auto redirecting
+ * to that location.
+ * @param keys
+ * @param baseUrl
+ */
+{template .skip_directory_level}
+  {if length($keys) == 1}
+    <meta http-equiv="refresh" content="1;URL={$baseUrl}{$keys[0].url}">
+    <script type="text/javascript">
+      window.location.href = "{$baseUrl}{$keys[0].url}"
+    </script>
+  {/if}
+{/template}
+
+/**
+ * @param key
+ * @param locale
+ * @param? pageLevel
+ */
+{template .directory_list_link_title}
+  {if $pageLevel == 'Country'}
+    {lcountryName($locale, $key.key)}
+  {elseif $pageLevel == 'State'}
+    {lregionName($locale, $key.loc.country, $key.key)}
+  {else}
+    {$key.key|abbr:false}
+  {/if}
+{/template}
+
+/**
+ * @param key
+ */
+{template .location_grid_link_title}
+  {$key.loc.name} at {$key.loc.address1}
+{/template}

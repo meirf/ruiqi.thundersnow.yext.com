@@ -1,0 +1,66 @@
+{namespace components}
+
+/*
+{call components.youtube_embed}
+  {param video: /}
+
+  {param embedYouTube: /}
+  {param showYouTubeThumbnail: /}
+  {param hideVideoControls: /}
+  {param showVideoTitle: /}
+  {param thumbnailIndex: /}
+{/call}
+*/
+
+/**
+ * @param video
+ * @param? embedYouTube
+ * @param? hideVideoControls
+ * @param? showVideoTitle
+ * @param? thumbnailIndex
+ * @param? hideSchema
+ * @param? hideRelated
+ * @param? id required if you use embedded iframe
+ */
+
+{template .youtube_embed}
+
+  {if strlen($video) > 0}
+    <div class="youtube-video-wrapper"{if not $hideSchema} itemscope itemtype="http://schema.org/MediaObject"{/if}>
+      {if not $hideSchema}
+        <div itemprop="embedUrl" content="{$video}">
+      {/if}
+      {if $embedYouTube ?: true}
+        <div class="youtube-embed-video-wrapper">
+          <a class="youtube-embed"
+          data-youtubeurl="{$video}"
+          data-showcontrols="{not ($hideVideoControls ?: 0)}"
+          data-showtitle="{$showVideoTitle ?: 0}"
+          data-hiderelated="{$hideRelated ?: 0}"
+          href="{$video}"
+          id="{$id ?: 'youtube-embed'}">
+          View this video on YouTube
+        </a>
+        </div>
+      {else}
+        <div class="youtube-thumbnail-wrapper-outer">
+          <div class="youtube-thumbnail-wrapper-inner">
+            <img class="youtube-thumbnail-image" data-youtubeurl="{$video}" data-thumbnailindex="{$thumbnailIndex ?: 'mqdefault'}">
+            <div class="youtube-thumbnail-play-table-wrapper">
+              <table class="youtube-thumbnail-play-table">
+                <tr>
+                  <td>
+                    <a class="youtube-thumbnail-play-button" href="{$video}" target="_blank" rel="nofollow"></a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      {/if}
+      {if not $hideSchema}
+        </div>
+      {/if}
+    </div>
+  {/if}
+{/template}

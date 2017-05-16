@@ -1,0 +1,219 @@
+{namespace components.maps}
+
+
+/*
+{call components.maps.map}
+  {param address1: /}
+  {param city: /}
+  {param state: /}
+  {param postalCode: /}
+  {param width: /}
+  {param height: /}
+  {param mapType: /}
+  {param schemaOrgMapTag: /}
+  {param schemaOrgGeoTag: /}
+  {param latitude: /}
+  {param longitude: /}
+{/call}
+*/
+
+/**
+ * Create a static map from our map API
+ *
+ * Location fields:
+ * @param address1
+ * @param city
+ * @param state
+ * @param postalCode
+ * @param latitude The geo latitude to use for the map
+ * @param longitude The geo longitude to use for the map
+ * @param country
+ * @param? listings
+ *
+ * @param? provider
+ * @param? providerApiKey
+ * @param? width
+ * @param? height
+ * @param? siteDomain
+ *
+ * Tag configuration:
+ * @param? mapType One of ('road', 'satellite')
+ * @param schemaOrgMapTag (true/false)
+ * @param schemaOrgGeoTag (true/false)
+ *
+ * @param? noTrack
+ * @param? gaCategory
+ */
+{template .static_map}
+  <div class="map-wrapper" itemscope itemtype="http://schema.org/Place">
+    // Since this is just meta data but needs to be structured
+    // We use hidden meta tags in a hidden span element
+    {if $schemaOrgGeoTag}
+      <span class="coordinates" itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+        <meta itemprop="latitude" content="{$latitude}">
+        <meta itemprop="longitude" content="{$longitude}">
+      </span>
+    {/if}
+
+    <a href="{call .get_directions_url data="all" /}" target="_blank" {if $noTrack}data-ga-no-track="true"{/if} {if $gaCategory}data-ga-category="{$gaCategory}"{/if}>
+      <div id="geo-border"></div>
+      <img src='{call .static_map_url data="all" /}'
+          {if $schemaOrgMapTag}
+            itemprop="map"
+          {/if}>
+    </a>
+  </div>
+{/template}
+
+/**
+ * @param? mapType One of ('road', 'satellite')
+ * @param? siteDomain
+ * @param? provider
+ * @param? providerApiKey
+ * Location fields:
+ * @param latitude The geo latitude to use for the map
+ * @param longitude The geo longitude to use for the map
+ *
+ * @param? width
+ * @param? height
+ */
+{template .static_map_url}
+  {if $provider == 'Bing'}
+    {call .bing_static_map_url data="all"}
+      {param apiKey: $providerApiKey /}
+      {param width: $width ?: 350 /}
+      {param height: $height ?: 350 /}
+    {/call}
+  {elseif $provider == 'MapQuest'}
+    {call .mapquest_static_map_url data="all"}
+      {param apiKey: $providerApiKey /}
+      {param width: $width ?: 350 /}
+      {param height: $height ?: 350 /}
+    {/call}
+  {elseif $provider == 'Mapbox'}
+    {call .mapbox_static_map_url data="all"}
+      {param apiKey: $providerApiKey /}
+      {param width: $width ?: 350 /}
+      {param height: $height ?: 350 /}
+    {/call}
+  {else}
+    {call .google_static_map_url data="all"}
+      {param siteDomain: $siteDomain /}
+      {param mapType: $mapType ?: 'road' /}
+      {param width: $width ?: 350 /}
+      {param height: $height ?: 350 /}
+    {/call}
+  {/if}
+{/template}
+
+/**
+ * @param width
+ * @param height
+ * @param mapType One of ('road', 'satellite')
+ * @param siteDomain
+ * Location fields:
+ * @param latitude The geo latitude to use for the map
+ * @param longitude The geo longitude to use for the map
+ */
+{template .google_static_map_url}
+  {let $latlng : $latitude + ',' + $longitude /}
+  // TODO: Make the icon url not always lenscrafthers
+  {let $params: [
+    'center': $latlng,
+    'zoom': '13',
+    'size': $width + 'x' + $height,
+    'maptype': $mapType == 'road' ? 'roadmap' : 'satellite',
+    'markers': 'icon:http://' + $siteDomain + '/images/pushpin_small.png' + '|' + $latlng,
+    'sensor': 'false',
+    'channel' : $siteDomain
+  ]/}
+  // TODO: This needs to accept a client API key
+  {gmap('/maps/api/staticmap', $params) |noAutoescape}
+{/template}
+
+/*
+{call components.maps.bing_static_map_url}
+  {param apiKey: /}
+  {param latitude: /}
+  {param longitude: /}
+  {param width: /}
+  {param height: /}
+{/call}
+*/
+/**
+ * @param apiKey
+ * @param latitude
+ * @param longitude
+ * @param width
+ * @param height
+ */
+{template .bing_static_map_url}
+  {let $key: $apiKey ?: 'AmDo0rpmCQPle6u8ExBc_GoPR39_mEuPMXnzyHs9z89SXcfBvKojMFlKF2eDH5dY' /}
+  http://dev.virtualearth.net/REST/v1/Imagery/Map/road?{$width},{$height}&pushpin={$latitude},{$longitude}&key={$key}
+{/template}
+
+/*
+{call components.maps.mapquest_static_map_url}
+  {param apiKey: /}
+  {param latitude: /}
+  {param longitude: /}
+  {param width: /}
+  {param height: /}
+{/call}
+*/
+/**
+ * @param apiKey
+ * @param latitude
+ * @param longitude
+ * @param width
+ * @param height
+ */
+{template .mapquest_static_map_url}
+  {let $key: $apiKey ?: 'Fmjtd%7Cluu829urnh%2Cbn%3Do5-9w1ghy' /}
+  http://www.mapquestapi.com/staticmap/v4/getmap?key={$key}&size={$width},{$height}&zoom=10&center={$latitude},{$longitude}
+{/template}
+
+/*
+  {call components.maps.mapbox_static_map_url data="all"}
+    {param width: '360' /}
+    {param height: '100' /}
+    {param latitude: $location.latitude /}
+    {param longitude: $location.longitude  /}
+    {param options: [
+        'imageFormat': '@2x.png',
+        'zoom':10,
+        'pinSize':'pin-l',
+        'marker':'slaughterhouse',
+        'color':'FED565'
+      ] /}
+  {/call}
+*/
+/**
+ * @param? apiKey
+ * @param latitude
+ * @param longitude
+ * @param width
+ * @param height
+ * @param? options //This is a map
+ */
+{template .mapbox_static_map_url}
+  {let $key: $apiKey ?: 'pk.eyJ1IjoieWV4dCIsImEiOiJqNzVybUhnIn0.hTOO5A1yqfpN42-_z_GuLw' /}
+  {let $format: $options?.imageFormat ?: '.png' /}
+  {let $zoomLevel: $options?.zoom ?: 15 /}
+  {let $mapIdentifier: $options?.mapboxMapIdentifier ?: 'yext.af25bd17' /}
+  {let $pinSize: $options?.pinSize ?: 'pin-m' /}
+  {let $marker}
+    {if isNonnull($options?.marker)}
+      -{$options?.marker}
+    {/if}
+  {/let}
+  {let $color}
+    {if isNonnull($options?.color)}
+      +{$options?.color}
+    {/if}
+  {/let}
+  {let $overlay}
+    {$pinSize}{$marker}{$color}({$longitude},{$latitude})
+  {/let}
+  http://api.tiles.mapbox.com/v4/{$mapIdentifier}/{$overlay}/{$longitude},{$latitude},{$zoomLevel}/{$width}x{$height}{$format}?access_token={$key}
+{/template}

@@ -1,0 +1,88 @@
+{namespace common}
+/**
+* @param baseUrl
+* @param crumbNames
+* @param crumbUrls
+* @param logo
+* @param title
+* @param? description
+* @param? keywords
+* @param? isStaging
+* @param siteDomain
+* @param isHttps
+*/
+{template .head_tags}
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>
+    {$title |noAutoescape}
+  </title>
+
+  <link href="{$baseUrl}favicon.png" rel="shortcut icon">
+  <link href="{$baseUrl}touch.png" rel="apple-touch-icon-precomposed">
+
+  <meta name="description"
+        content="{if $description}{$description}
+                 {else}
+                   {if length($crumbNames) > 1} in{sp}
+                     {foreach $crumb in $crumbNames}
+                       {$crumbNames[(length($crumbNames) - 1) - index($crumb)]}
+                       {if index($crumb) < length($crumbNames) - 2}, {/if}
+                     {/foreach}.
+                   {/if}
+                 {/if}">
+  <meta name="keywords" content="{if $keywords}{$keywords}{/if}">
+
+  <meta property="og:title" content="{$title |noAutoescape}">
+  <meta property="og:image" content="{$logo}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{$baseUrl}{$crumbUrls[length($crumbUrls) - 1]}">
+
+  {call common.helpers.canonical_link data="all" /}
+
+  {if $isStaging}
+    <script type="text/javascript">
+      {literal}
+        data = {
+          "messageType" : "pages:bubbleClick",
+          "destination" : window.location.href
+        }
+        window.parent.postMessage(data, "*");
+      {/literal}
+    </script>
+  {/if}
+{/template}
+
+/**
+ * @param baseUrl
+ * @param? windowsTileBackgroundColor
+ * @param? useGeneratedFavicons
+ */
+{template .favicons}
+  {if $useGeneratedFavicons}
+    <meta name="msapplication-square70x70logo" content="{$baseUrl}images/favicons/windows-tile-70x70.png">
+    <meta name="msapplication-square150x150logo" content="{$baseUrl}images/favicons/windows-tile-150x150.png">
+    <meta name="msapplication-square310x310logo" content="{$baseUrl}images/favicons/windows-tile-310x310.png">
+    <meta name="msapplication-TileImage" content="{$baseUrl}images/favicons/windows-tile-144x144.png">
+    {if $windowsTileBackgroundColor}
+      <meta name="msapplication-TileColor" content="{$windowsTileBackgroundColor}">
+    {/if}
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{$baseUrl}images/favicons/apple-touch-icon-152x152-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{$baseUrl}images/favicons/apple-touch-icon-120x120-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{$baseUrl}images/favicons/apple-touch-icon-76x76-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{$baseUrl}images/favicons/apple-touch-icon-60x60-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{$baseUrl}images/favicons/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{$baseUrl}images/favicons/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{$baseUrl}images/favicons/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="{$baseUrl}images/favicons/apple-touch-icon.png">
+    <meta name="mobile-web-app-capable" value="yes">
+    <link rel="icon" sizes="196x196" href="{$baseUrl}images/favicons/homescreen-196x196.png">
+    <link rel="shortcut icon" href="{$baseUrl}images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="64x64" href="{$baseUrl}images/favicons/favicon.png">
+  {else}
+    <link rel="shortcut icon" href="{$baseUrl}favicon.ico">
+  {/if}
+{/template}

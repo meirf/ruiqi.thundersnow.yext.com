@@ -1,0 +1,55 @@
+{namespace components.performance}
+/*
+{call components.performance.load_image}
+  {param content}
+    <img class="call-us-today-image"
+         src="{$customByName['Location Photo'].sizes[0].url}"
+         alt="{$customByName['Location Photo'].description}">
+  {/param}
+  {param mediaQuery: '(min-width: 768px)' /}
+  {param identifier: 'js-load-call-us' /} // optional
+  {param removeNoScriptFallback: false /} // optional, set to true if you want the <noscript> removed.
+{/call}
+*/
+/**
+ * load_image
+ * @param content
+ * @param? identifier
+ * @param mediaQuery
+ * @param? removeNoScriptFallback
+ */
+{template .load_content}
+  {let $id: $identifier ?: 'js-load-content' /}
+  {if not $removeNoScriptFallback}
+    <noscript>
+      {$content |noAutoescape}
+    </noscript>
+  {/if}
+  <script type="text/template" id="{$id}">
+    {$content |noAutoescape}
+  </script>
+  <script>
+    (function(){lb}
+      var loadContent = function(){lb}
+        var template = document.getElementById('{$id}');
+        template.insertAdjacentHTML('afterend', template.innerHTML);
+      {rb};
+      if(window.matchMedia) {lb}
+        var atLeastTablet = window.matchMedia('{$mediaQuery}');
+        if (atLeastTablet.matches) {lb}
+          loadContent();
+        {rb} else {lb}
+          var listener = function(query){lb}
+            if (query.matches) {lb}
+              loadContent();
+              atLeastTablet.removeListener(listener);
+            {rb}
+          {rb};
+          atLeastTablet.addListener(listener);
+        {rb}
+      {rb} else {lb}
+        loadContent();
+      {rb}
+    {rb})();
+  </script>
+{/template}

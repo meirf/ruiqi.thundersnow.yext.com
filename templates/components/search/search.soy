@@ -1,0 +1,180 @@
+{namespace components.search}
+
+/*
+{call components.search.simple_search_bar}
+  {param baseUrl: /}
+  {param searcherPath: /}
+
+  {param queryParameter: /}
+  {param formLabel: /}
+  {param submitLabel: /}
+  {param placeHolder: /}
+  {param optionalInputs: /}
+  {param defaultValue: /}
+{/call}
+*/
+
+/**
+ * @param baseUrl
+ * @param searcherPath
+ * @param? queryParameter
+ * @param? formLabel
+ * @param? submitLabel
+ * @param? placeHolder
+ * @param? optionalInputs
+ * @param? defaultValue
+ * @param? locale
+ * @param? inputId
+ * @param? formId
+ * @param? title
+ * @param? hLevel
+ * @param? autofocus
+ */
+{template .simple_search_bar}
+  <div class="search-wrapper">
+    {call components.util.h_level}
+      {param contents: $title ?: 'Find a location' /}
+      {param level: $hLevel ?: 2 /}
+      {param class: 'search-title' /}
+    {/call}
+    {call .search_form data="all"}
+      {param content}
+        <div class="search-input-row">
+          {call .input data="all" /}
+          {call .search_button data="all" /}
+        </div>
+        {call .optional_inputs data="all" /}
+      {/param}
+    {/call}
+  </div>
+{/template}
+
+/**
+ * @param baseUrl
+ * @param? locale
+ * @param searcherPath
+ * @param content
+ * @param? formId
+ */
+{template .search_form}
+  {let $localedSearch: $locale and $locale != 'en' ? $locale + '/' : '' /} // Default locale 'en' not part of url
+  <form method="get" {if $formId}id="{$formId}" {/if}class="search" action="{$baseUrl}{$localedSearch}{$searcherPath}">
+    {$content |noAutoescape}
+  </form>
+{/template}
+
+/**
+ * @param? submitLabel
+ */
+{template .search_button}
+  {let $button: $submitLabel ?: 'Go' /}
+  <div class="search-button-wrapper">
+    <button type="submit" class="search-button">{$button |noAutoescape}</button>
+  </div>
+{/template}
+
+/**
+ * @param? optionalInputs
+ */
+{template .optional_inputs}
+  {if $optionalInputs}
+    <div class="search-optional-inputs">
+      {$optionalInputs |noAutoescape}
+    </div>
+  {/if}
+{/template}
+
+/*
+{call components.search.input}
+  {param queryParameter: /}
+  {param placeHolder: /}
+  {param defaultValue: /}
+{/call}
+*/
+
+/**
+ *  @param? queryParameter
+ *  @param? placeHolder
+ *  @param? defaultValue
+ *  @param? inputId
+ *  @param? formLabel
+ *  @param? autofocus
+ */
+{template .input}
+  {let $placeHolderText}
+    {if $placeHolder}
+      {$placeHolder |noAutoescape}
+    {else}
+      {msg desc="Form placeholder for geographic search"}
+        New York, NY
+      {/msg}
+    {/if}
+  {/let}
+  {let $labelText}
+    {if $formLabel}
+      {$formLabel |noAutoescape}
+    {else}
+      {msg desc=""}
+        Search by City, State, Zip...
+      {/msg}
+    {/if}
+  {/let}
+  {let $id: $inputId ?: $queryParameter ?: 'q' /}
+  <div class="search-label-wrapper">
+    <label class="search-label"
+           for="{$id |noAutoescape}">{$labelText |noAutoescape}</label>
+  </div>
+  <div class="search-input-wrapper">
+    <input placeholder="{$placeHolderText|noAutoescape}"
+           class="search-input"
+           type="text"
+           autocorrect="off"
+           name="{$queryParameter ?: 'q' |noAutoescape}"
+           id="{$id |noAutoescape}"
+           value="{$defaultValue ?: '' |noAutoescape}"
+           {if $autofocus}autofocus{/if}
+           onfocus="this.setSelectionRange(0, this.value.length);" />
+  </div>
+{/template}
+
+/*
+{call components.search.pretty_city_state_query}
+  {param query: /}
+  {param queryLocation: /}
+{/call}
+*/
+
+/**
+ *  @param query
+ *  @param? queryLocation
+ */
+{template .pretty_city_state_query}
+  {if isNonnull($queryLocation) and $queryLocation['geolocated']}
+    {$queryLocation['city']}
+    {if strlen($queryLocation['city']) > 0 and strlen($queryLocation['state']) > 0}
+      ,{sp}
+    {/if}
+    {$queryLocation['state']}
+  {else}
+    {$query}
+  {/if}
+{/template}
+
+/*
+{call components.search.pretty_zip_query}
+  {param query: /}
+  {param queryLocation: /}
+{/call}
+*/
+
+/**
+ *  @param query
+ *  @param? queryLocation
+ */
+{template .pretty_zip_query}
+  {if isNonnull($queryLocation) and $queryLocation['geolocated']}
+    {$queryLocation['zip']}
+  {else}
+    {$query}
+  {/if}
+{/template}

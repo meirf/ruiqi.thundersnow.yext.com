@@ -1,0 +1,145 @@
+{namespace components.uber}
+
+/**
+ * When Using the Component:
+ * 1) Make Sure the Yext Analytics Event Names 'uber_click' and 'yext_uber_click' are created.
+ * 2) Include .uber_analytics in the useminFooter
+ * 3) Wrap the component call with an Uber-dedicated custom field. ('Uber enbaled' or 'Uber Link' or something of the sort)
+ */
+
+/**
+ * @param? uber
+ * @param? customVisibility
+ * @param? linkText //Passthrough for Uber Link
+ * @param? uberIconBefore //Passthrough for Uber Link
+ * @param? uberIconAfter //Passthrough for Uber Link
+ * @param? createUrl //Passthrough for Uber Url
+ * @param? useWrappedUrl //Passthrough for Uber Url
+ * @param? latitude //Passthrough for Uber Url
+ * @param? longitude //Passthrough for Uber Url
+ * @param? routableLatitude //Passthrough for Uber Url
+ * @param? routableLongitude //Passthrough for Uber Url
+ * @param? name //Passthrough for Uber Url
+ * @param? action //Passthrough for Uber Url
+ * @param? pickup //Passthrough for Uber Url
+ * @param? clientId  //Passthrough for Uber Url
+ */
+{template .wrapper}
+  <div class="c-uber{$customVisibility ? $customVisibility : ' visible-xs'}">
+    {call .ride_link data="all" /}
+  </div>
+{/template}
+
+/**
+ * @param? uber
+ * @param? linkText
+ * @param? uberIconBefore
+ * @param? uberIconAfter
+ * @param? createUrl //Passthrough for Uber Url
+ * @param? useWrappedUrl //Passthrough for Uber Url
+ * @param? latitude //Passthrough for Uber Url
+ * @param? longitude //Passthrough for Uber Url
+ * @param? routableLatitude //Passthrough for Uber Url
+ * @param? routableLongitude //Passthrough for Uber Url
+ * @param? name //Passthrough for Uber Url
+ * @param? action //Passthrough for Uber Url
+ * @param? pickup //Passthrough for Uber Url
+ * @param? clientId  //Passthrough for Uber Url
+ */
+{template .ride_link}
+  // Be very careful tracking the unwrapped (Universal Link on iOS) with an
+  // onclick/analytics handler unless you know what you are doing.  The
+  // data-ya-no-wait is here to instruct the Yext Analytics component not to
+  // hijack the click event in order to ensure that the Universal Link works
+  // as expected.
+  <a class="c-uber-ride-link {$useWrappedUrl ? 'is-uber-wrapped' : 'is-uber-unwrapped' }
+            {if $uberIconBefore} icon-before{/if}
+            {if $uberIconAfter} icon-after{/if}"
+            href="{call .ride_url data="all" /}" data-ya-no-wait="true">
+    {if $linkText}
+      {$linkText}
+    {else}
+      Get a Ride With Uber
+    {/if}
+  </a>
+{/template}
+
+/**
+ * @param? uber
+ * @param? createUrl
+ * @param? useWrappedUrl
+ * @param? latitude
+ * @param? longitude
+ * @param? routableLatitude
+ * @param? routableLongitude
+ * @param? name
+ * @param? action
+ * @param? pickup
+ * @param? clientId
+ */
+{template .ride_url}
+  {if $createUrl}
+    {let $doesRoutableCoordExist: $routableLatitude and $routableLongitude /}
+    {let $uberEnabledStoreLat}
+      {if $doesRoutableCoordExist}
+        {$routableLatitude}
+      {else}
+        {$latitude}
+      {/if}
+    {/let}
+    {let $uberEnabledStoreLng}
+      {if $doesRoutableCoordExist}
+        {$routableLongitude}
+      {else}
+        {$longitude}
+      {/if}
+    {/let}
+    https://m.uber.com/ul/?action={if $action}{$action}{else}setPickup{/if}&pickup={if $pickup}{$pickup}{else}my_location{/if}&client_id={if $clientId}{$clientId}{else}KXQcwoj2Zb8ymDzKgVgbIaDE5iAE_TAj{/if}&dropoff[latitude]={$uberEnabledStoreLat}&dropoff[longitude]={$uberEnabledStoreLng}{if $name}&dropoff[nickname]={$name |encodeUrl}{/if}
+  {elseif $uber}
+    {if $useWrappedUrl and $uber.wrappedUrl}
+      {$uber.wrappedUrl |noAutoescape}
+    {elseif $uber.url}
+      {$uber.url |noAutoescape}
+    {/if}
+  {/if}
+{/template}
+
+
+/**
+ * @param? useWrappedUrl
+ * @param? optional
+ */
+{template .analytics}
+  {if $useWrappedUrl}
+    {call .wrapped_analytics data="all" /}
+  {else}
+    {call .unwrapped_analytics data="all" /}
+  {/if}
+{/template}
+
+/**
+ * @param? optional
+ */
+{template .wrapped_analytics}
+  {call components.yext_analytics.click}
+    {param selector: '.c-uber-ride-link.is-uber-wrapped' /}
+    {param analyticsEventName: 'yext_uber_click' /}
+    {param optional: $optional /}
+  {/call}
+{/template}
+
+/**
+ * @param? optional
+ */
+{template .unwrapped_analytics}
+  // NOTE: The 'uber_click' event is special - in addition to acting as normal
+  // Pages Analytics Event, its is also copied into the Uber Integration section
+  // of Yext Analytics by the analytics aggregation system.  This is done to
+  // replicate the automatic analytics treatment that occurs when using the
+  // "wrapped" Uber URL in this component.
+  {call components.yext_analytics.click}
+    {param selector: '.c-uber-ride-link.is-uber-unwrapped' /}
+    {param analyticsEventName: 'uber_click' /}
+    {param optional: $optional /}
+  {/call}
+{/template}
