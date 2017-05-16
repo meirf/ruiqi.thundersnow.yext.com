@@ -76,6 +76,7 @@
       <p>Total Locations: {$locationCount}</p>
       <ul>
         {foreach $key in $keys}
+
         {let $loc: $key.loc /}
         <li>
               {if $key.url}
@@ -87,6 +88,7 @@
               <p/>
               {$loc.phones}
          </li>
+
         {/foreach}
       </ul>
   {call helpers.footer data="all"/}
