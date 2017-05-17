@@ -79,7 +79,7 @@
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
 				"locationScope" : {
-					"savedSearch" : "no locations"
+					"savedSearch" : "US Locations"
 				}
 			}
 		},
