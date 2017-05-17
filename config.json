@@ -99,47 +99,6 @@
 			}
 		},
 		{
-			"name": "Store Locator V2",
-			"search": {
-				"useNewSearcher": true,
-        "disableReverseIpSearch": true,
-				"locationPageSet": "Locations",
-				"urlTemplate": "desktop.urls.storelocatorv2",
-				"template": "desktop.search.default",
-				"queryParam": "q",
-				"customParams": [
-          {
-            "name": "Locator Category",
-            "param": "choices"
-          },
-					{
-            "name": "TestString",
-            "param": "test"
-          }
-        ],
-				"searchFields": [{
-					"field": "Name",
-					"param": "name",
-					"mode": "EQUALS"
-				},
-				{
-					"field": "Address",
-					"param": "address",
-					"mode": "CONTAINS"
-				},
-				{
-					"field": "Custom String",
-					"param": "custom",
-					"mode": "CONTAINS"
-				},
-				{
-					"field": "Yay Nay",
-					"param": "yaynay",
-					"mode": "EQUALS"
-				}]
-			}
-		},
-		{
 			"name": "Store Autocomplete",
 			"autocomplete": {
 				"urlTemplate": "desktop.urls.storeautocomplete",
