@@ -86,7 +86,9 @@
 		{
 			"name": "Store Locator",
 			"search": {
-				"locationPageSet": "Locations",
+				    "locationScopeOverride": {
+"savedSearch": "Japan"
+}
 				"urlTemplate": "desktop.urls.storelocator",
 				"template": "desktop.search.default",
 				"queryParam": "q",
