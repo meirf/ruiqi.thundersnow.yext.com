@@ -93,7 +93,7 @@
 				"template": "desktop.search.default",
 				"queryParam": "q",
 				"disableReverseIpSearch": true,
-				"useNewSearcher": true,
+				
 				"searchFields": [{
 					"field": "Name",
 					"param": "name",
