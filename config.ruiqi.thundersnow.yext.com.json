@@ -170,7 +170,7 @@
 			"locationDirectory": {
 				"levels": [
 					{
-						"urlTemplate": "desktop.urls.customByName",
+						"urlTemplate": "desktop.urls.directory1State",
 						"template": "desktop.directory.stateList",
 						"field": "TestString",
 						"orderBy": {
