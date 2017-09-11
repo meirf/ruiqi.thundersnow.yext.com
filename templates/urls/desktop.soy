@@ -75,10 +75,10 @@
  * @param address1
  * @param country
  * @param? isCollision
- * @param customByName
+ * @param state
  */
 {template .locationPageSet1alias1}
-{call desktop.urls.urlWithLocale data="all"}{param url}/alias1/lps1/{if $customByName['TestString']}{ $customByName['TestString']|latin:true|other:'-'|spaces:'-'|casing:'lower'}-{/if}{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/call}
+{call desktop.urls.urlWithLocale data="all"}{param url}/alias1/lps1/{if $state}{ $state|latin:true|other:'-'|spaces:'-'|casing:'lower'}-{/if}{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/call}
 {/template}
 
 /**
