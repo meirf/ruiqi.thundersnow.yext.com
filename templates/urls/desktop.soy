@@ -64,7 +64,7 @@
  * @param? isCollision
  */
 {template .locationPageSet1}
-{call desktop.urls.urlWithLocale data="all"}{param url}/lps1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/call}
+{call desktop.urls.urlWithLocale data="all"}{param url}/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/call}
 {/template}
 
 /**
