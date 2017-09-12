@@ -181,9 +181,9 @@
 					{
 						"urlTemplate": "desktop.urls.directory1City",
 						"template": "desktop.directory.cityList",
-						"field": "Primary Locale",
+						"field": "PrimaryLocale",
 						"orderBy": {
-							"field": "Primary Locale",
+							"field": "PrimaryLocale",
 							"order": "ascending"
 						}
 					},
