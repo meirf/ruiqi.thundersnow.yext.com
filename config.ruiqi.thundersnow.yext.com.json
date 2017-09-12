@@ -172,9 +172,9 @@
 					{
 						"urlTemplate": "desktop.urls.directory1State",
 						"template": "desktop.directory.stateList",
-						"field": "State",
+						"field": "Country",
 						"orderBy": {
-							"field": "State",
+							"field": "Country",
 							"order": "ascending"
 						}
 					},
