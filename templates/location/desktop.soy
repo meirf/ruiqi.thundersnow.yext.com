@@ -38,6 +38,7 @@
  * @param urls
  * @param? healthcare
  * @param? types
+ * @param feedbackUrl
  * @param alternates
  */
 {template .default}
@@ -155,6 +156,7 @@
     <p>{$healthcare.firstName}</p>
     <p>{$healthcare}</p>
     {/if}
-
+  <h3>feedbackUrl</h3>
+  <p>{$feedbackUrl}</p>
   {call helpers.footer data="all"/}
 {/template}
