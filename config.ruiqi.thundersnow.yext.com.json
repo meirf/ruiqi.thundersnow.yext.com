@@ -172,18 +172,18 @@
 					{
 						"urlTemplate": "desktop.urls.directory1State",
 						"template": "desktop.directory.stateList",
-						"field": "Country",
+						"field": "State",
 						"orderBy": {
-							"field": "Country",
+							"field": "State",
 							"order": "ascending"
 						}
 					},
 					{
 						"urlTemplate": "desktop.urls.directory1City",
 						"template": "desktop.directory.cityList",
-						"field": "State",
+						"field": "City",
 						"orderBy": {
-							"field": "State",
+							"field": "City",
 							"order": "ascending"
 						}
 					},
