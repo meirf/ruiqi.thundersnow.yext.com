@@ -22,7 +22,7 @@
       <ul>
         {foreach $key in $keys} 
           <li> fieldName: {$key.fieldName}</li>
-          <li><a href="{$baseUrl}{$key.url}">{$key.key}</a> ({$key.count}) [{lregionName('en', $key.loc.country, $key.key)}]</li>
+          <li>fieldName: {$key.fieldName}<a href="{$baseUrl}{$key.url}">{$key.key}</a> ({$key.count}) [{lregionName('en', $key.loc.country, $key.key)}]</li>
         {/foreach}
       </ul>
   {call helpers.footer data="all"/}
