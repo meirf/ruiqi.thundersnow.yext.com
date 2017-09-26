@@ -49,6 +49,7 @@
       <p>Total Locations: {$locationCount}</p>
       <ul>
         {foreach $key in $keys}
+          <li> fieldName: {$key.fieldName}</li>
             <li><a href="{$baseUrl}{$key.url}">{$key.key}</a> ({$key.count})</li>
         {/foreach}
       </ul>
@@ -77,6 +78,7 @@
       <p>Total Locations: {$locationCount}</p>
       <ul>
         {foreach $key in $keys}
+          <li> fieldName: {$key.fieldName}</li>
 
         {let $loc: $key.loc /}
         <li>
