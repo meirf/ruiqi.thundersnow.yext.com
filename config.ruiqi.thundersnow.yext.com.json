@@ -14,8 +14,10 @@
 					"desktop": "desktop.location.entity",
 					"mobile": "desktop.location.entity"
 				},
-				"entityType": "event"
+				"entityType": "event",
+				"outputFormat": ["Html", "Json"]
 			}
+			
 		},
 		{
 			"name": "EPS directory",
