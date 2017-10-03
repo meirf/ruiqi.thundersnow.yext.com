@@ -15,9 +15,6 @@
 					"mobile": "desktop.location.entity"
 				},
 				"entityType": "event",
-				"scope" : {
-					"savedSearch" : "Bars"
-				}
 			}
 		},
 		{
