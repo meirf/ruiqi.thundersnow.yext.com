@@ -19,24 +19,7 @@
 					"savedSearch" : "Bars"
 				}
 			}
-		},
-		{
-			"name": "EPS directory",
-			"entityDirectory": {
-				"levels": [
-					{
-						"urlTemplate": "desktop.urls.directory1State",
-						"template": "desktop.directory.stateList",
-						"field": "State",
-						"orderBy": {
-							"field": "State",
-							"order": "ascending"
-						}
-					}
-				],
-				"entityPageSet": "LRS test",
-				"outputFormat": ["Html", "Json"]
-			}
+		
 		}
 	]
 }
