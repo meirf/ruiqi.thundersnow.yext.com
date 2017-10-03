@@ -14,7 +14,7 @@
 					"desktop": "desktop.location.entity",
 					"mobile": "desktop.location.entity"
 				},
-				"entityType": "event",
+				"entityType": "event"
 			}
 		},
 		{
