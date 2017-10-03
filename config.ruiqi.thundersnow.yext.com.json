@@ -39,8 +39,7 @@
 						}
 					}
 				],
-				"entityPageSet": "LRS test",
-				"outputFormat": ["Html", "Json"]
+				"entityPageSet": "LRS test"
 			}
 		}
 	]
