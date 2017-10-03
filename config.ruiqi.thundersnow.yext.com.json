@@ -29,7 +29,7 @@
 						"field": {
 							"name": "State",
 							"component": "month"
-						}
+						},
 						"orderBy": {
 							"field": "State",
 							"order": "ascending"
