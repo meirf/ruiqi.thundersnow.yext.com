@@ -2,172 +2,27 @@
 	"configVersion": "1",
 	"deviceDetected": false,
 	"https": false,
-	"liveSite": true,
-	"locales": ["en","es","es_MX","it"],
+	"liveSite": false,
+	"locales": ["en"],
 	"templateVersion": 3,
 	"features": [
 		{
-			"name": "Index",
-			"staticPage": {
-				"urlTemplate": "desktop.urls.index",
-				"template": "desktop.static.index"
-			}
-		},
-		{
-			"name": "Static Pagey Thing",
-			"staticPage": {
-				"urlTemplate": "desktop.urls.static",
-				"template": "desktop.static.default"
-			}
-		},
-		{
-			"name": "Geocode IP",
-			"geocodeIP": {
-				"urlTemplate": "desktop.urls.geocodeip"
-			}
-		},
-		{
-			"name": "Reverse Geocode",
-			"reverseGeocode": {
-				"urlTemplate": "desktop.urls.reversegeocode"
-			}
-		},
-		{
-			"name": "XML Sitemap",
-			"xmlsitemap": {
-				"urlTemplate": "desktop.urls.xmlSitemap",
-				"excludeStaticFiles": true
-			}
-		},
-		{
-			"name": "HTML Sitemap",
-			"htmlsitemap": {
-				"urlTemplate": "desktop.urls.htmlSitemap",
-				"template": "desktop.sitemap.default"
-			}
-		},
-		{
-			"name": "Locations",
-			"locationPageSet": {
-				"urlTemplate": "desktop.urls.locationPageSet1",
-				"template": "desktop.location.default",
-				"outputFormat": ["Html", "Json"],
-				"urlAliases": [
-					"desktop.urls.locationPageSet1alias1"
-				],
-				"alternates": [
-					{
-						"locationPageSet": "Locations Alternate",
-						"fieldName": "alternate"
-						
-					}
-				]
-			}
-		},
-		{
-			"name": "Locations Alternate",
-			"locationPageSet": {
-				"urlTemplate": "desktop.urls.locationPageSet1alias2",
-				"template": "desktop.location.default",
-				"outputFormat": ["Html", "Json"]
-			}
-		},
-		{
-			"name": "Bars",
-			"locationPageSet": {
-				"urlTemplate": "desktop.urls.bars",
-				"template": "desktop.location.default",
-				"outputFormat": ["Html", "Json"],
-				"locationScope" : {
-					"savedSearch" : "US Locations"
+			"name": "LRS test",
+			"entityPageSet": {
+				"urlTemplate": "desktop.urls.eps",
+				"templates": {
+					"desktop": "desktop.location.entity",
+					"mobile": "desktop.location.entity"
+				},
+				"entityType": "event",
+				"scope" : {
+					"savedSearch" : "Bars"
 				}
 			}
 		},
 		{
-			"name": "Store Locator",
-			"search": {
-				"locationPageSet": "Locations",
-				"urlTemplate": "desktop.urls.storelocator",
-				"template": "desktop.search.default",
-				"queryParam": "q",
-				"disableReverseIpSearch": true,
-				"searchFields": [{
-					"field": "Name",
-					"param": "name",
-					"mode": "EQUALS"
-				}]
-			}
-		},
-		{
-			"name": "Store Locator V2",
-			"search": {
-				"useNewSearcher": true,
-        "disableReverseIpSearch": true,
-				"locationPageSet": "Locations",
-				"urlTemplate": "desktop.urls.storelocatorv2",
-				"template": "desktop.search.default",
-				"queryParam": "q",
-				"customParams": [
-          {
-            "name": "Locator Category",
-            "param": "choices"
-          },
-					{
-            "name": "TestString",
-            "param": "test"
-          }
-        ],
-				"searchFields": [{
-					"field": "Name",
-					"param": "name",
-					"mode": "EQUALS"
-				},
-				{
-					"field": "Address",
-					"param": "address",
-					"mode": "CONTAINS"
-				},
-				{
-					"field": "Custom String",
-					"param": "custom",
-					"mode": "CONTAINS"
-				},
-				{
-					"field": "Yay Nay",
-					"param": "yaynay",
-					"mode": "EQUALS"
-				}]
-			}
-		},
-		{
-			"name": "Store Autocomplete",
-			"autocomplete": {
-				"urlTemplate": "desktop.urls.storeautocomplete",
-				"fields": [{
-					"field": "Name",
-					"param": "name",
-					"mode": "EQUALS"
-				}],
-				"locationScopeOverride": {
-					"savedSearch": "Japan"
-				}
-			}
-		},
-		{
-			"name": "Bar Locator",
-			"search": {
-				"locationPageSet": "Bars",
-				"urlTemplate": "desktop.urls.barlocator",
-				"template": "desktop.search.default",
-				"queryParam": "q",
-				"locationScopeOverride": {
-					"savedSearch": "Japan"
-				}
-			}
-		},
-		{
-			"name": "State - City Drilldown",
-			"locationDirectory": {
+			"name": "EPS directory",
+			"entityDirectory": {
 				"levels": [
 					{
 						"urlTemplate": "desktop.urls.directory1State",
@@ -177,67 +32,10 @@
 							"field": "State",
 							"order": "ascending"
 						}
-					},
-					{
-						"urlTemplate": "desktop.urls.directory1City",
-						"template": "desktop.directory.cityList",
-						"field": "City",
-						"orderBy": {
-							"field": "City",
-							"order": "ascending"
-						}
-					},
-					{
-						"urlTemplate": "desktop.urls.directory1Locations",
-						"template": "desktop.directory.locationList",
-						"field": "Locations",
-						"orderBy": {
-							"field": "Locations",
-							"order": "ascending"
-						}
 					}
 				],
-				"locationPageSet": "Locations",
+				"entityPageSet": "LRS test",
 				"outputFormat": ["Html", "Json"]
-			}
-		},
-		{
-			"name": "Bar list",
-			"locationDirectory": {
-				"levels": [
-					{
-						"urlTemplate": "desktop.urls.directoryBarsLocations",
-						"template": "desktop.directory.locationList",
-						"field": "Locations",
-						"orderBy": {
-							"field": "Locations",
-							"order": "ascending"
-						}
-					}
-				],
-				"locationPageSet": "Bars",
-				"outputFormat": ["Html"]
-			}
-		},
-		{
-			"name": "Bar list - with override",
-			"locationDirectory": {
-				"levels": [
-					{
-						"urlTemplate": "desktop.urls.directoryBarsLocationsOverride",
-						"template": "desktop.directory.locationList",
-						"field": "Locations",
-						"orderBy": {
-							"field": "Locations",
-							"order": "ascending"
-						}
-					}
-				],
-				"locationScopeOverride": {
-					"savedSearch": "Japan"
-				},
-				"locationPageSet": "Bars",
-				"outputFormat": ["Html"]
 			}
 		}
 	]
