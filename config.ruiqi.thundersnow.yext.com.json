@@ -15,7 +15,7 @@
 					"mobile": "desktop.location.entity"
 				},
 				"entityType": "event",
-				"outputFormat": ["html","json"]
+				"outputFormat": ["Html"]
 			}
 			
 		},
