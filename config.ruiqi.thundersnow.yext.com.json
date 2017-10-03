@@ -15,7 +15,10 @@
 					"mobile": "desktop.location.entity"
 				},
 				"outputFormat": ["Html", "Json"],
-				"entityType": "event"
+				"entityType": "event",
+				"scope" : {
+					"savedSearch" : "Bars"
+				}
 			}
 			
 		},
