@@ -1,6 +1,17 @@
 {namespace desktop.location}
 
 /**
+ * @param soyTemplateName
+ * @param id
+ * @param baseUrl
+ */
+{template .entity}
+    <h1>{$id}</h1>
+    <p>soyTemplateName: {$soyTemplateName}</p>
+    <p>baseUrl: {$baseUrl}</p>
+{/template}
+
+/**
  * @param isHttps
  * @param name
  * @param baseUrl
