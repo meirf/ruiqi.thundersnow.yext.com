@@ -27,7 +27,7 @@
 			"entityDirectory": {
 				"levels": [
 					{
-						"urlTemplate": "desktop.urls.directory1State",
+						"urlTemplate": "desktop.urls.directoryEps",
 						"template": "desktop.directory.stateList",
 						"field": {
 							"name": "State",
