@@ -99,8 +99,19 @@
 
 /**
  * @param baseUrl
+ * @param keys List of Objects: {key (name of this next directory level),
+ *                               loc (location information of a location in this directory),
+ *                               url (url of this directory level),
+ *                               count(number of locations in this directory level)}
  */
 {template .entityList}
     <p>baseUrl: {$baseUrl}</p>
+    <h3>Keys</h3>
+      <p>Total Locations: {$locationCount}</p>
+      <ul>
+        {foreach $key in $keys}
+          <li>{$key.fieldName}</li>
+            <li><a href="{$baseUrl}{$key.url}">{$key.key}</a> ({$key.count})</li>
+        {/foreach}
 {/template}
 
