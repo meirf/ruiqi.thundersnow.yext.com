@@ -109,8 +109,8 @@
     <h3>Keys</h3>
       <ul>
         {foreach $key in $keys}
-          <li>{$key.fieldName}</li>
-            <li><a href="{$baseUrl}{$key.url}">{$key.key}</a> ({$key.count})</li>
+ 
+            <li><a href="{$baseUrl}{$key.url}">{$key.url}</a> ({$key.count})</li>
         {/foreach}
 {/template}
 
