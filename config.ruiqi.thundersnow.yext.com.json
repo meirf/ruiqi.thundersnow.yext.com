@@ -28,7 +28,7 @@
 				"levels": [
 					{
 						"urlTemplate": "desktop.urls.directoryEps",
-						"template": "desktop.directory.stateList",
+						"template": "desktop.directory.entityList",
 						"field": {
 							"name": "State",
 							"component": "month"
