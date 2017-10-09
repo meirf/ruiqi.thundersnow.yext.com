@@ -29,12 +29,12 @@
 						"urlTemplate": "desktop.urls.directoryEps",
 						"template": "desktop.directory.entityList",
 						"field": {
-							"name": "StartTime"
+							"name": "locale"
 							
 						},
 						"orderBy": {
 							"field": {
-								"name": "StartTime"
+								"name": "locale"
 								
 							},
 							"order": "ascending"
