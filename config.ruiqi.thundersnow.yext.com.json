@@ -41,7 +41,7 @@
 						}
 					}
 				],
-				"searchScopeOverride": {
+				"scopeOverride": {
 					"savedSearch": "Japan"
 				},
 				"entityPageSet": "LRS test"
