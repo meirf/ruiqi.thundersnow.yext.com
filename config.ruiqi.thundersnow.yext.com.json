@@ -29,13 +29,13 @@
 						"urlTemplate": "desktop.urls.directoryEps",
 						"template": "desktop.directory.entityList",
 						"field": {
-							"name": "StartTime",
-							"component": "month"
+							"name": "StartTime"
+							
 						},
 						"orderBy": {
 							"field": {
-								"name": "StartTime",
-								"component": "month"
+								"name": "StartTime"
+								
 							},
 							"order": "ascending"
 						}
