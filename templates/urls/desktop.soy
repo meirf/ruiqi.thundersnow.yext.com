@@ -148,21 +148,21 @@
 // {/template}
 
 
-/**
- * @param locale
- * @param countryName
- */
-{template .directory1City}
-{call desktop.urls.urlWithLocale data="all"}{param url}/{$countryName|latin:true|other:'-'|spaces:'-'|casing:'lower'}/directory1/index.html{/param}{/call}
-{/template}
-
 // /**
 //  * @param locale
-//  * @param state
+//  * @param countryName
 //  */
 // {template .directory1City}
-// {call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+// {call desktop.urls.urlWithLocale data="all"}{param url}/{$countryName|latin:true|other:'-'|spaces:'-'|casing:'lower'}/directory1/index.html{/param}{/call}
 // {/template}
+
+/**
+ * @param locale
+ * @param state
+ */
+{template .directory1City}
+{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+{/template}
 
 /**
  * @param locale
