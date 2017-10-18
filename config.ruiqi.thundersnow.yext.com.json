@@ -144,7 +144,7 @@
 			"autocomplete": {
 				"urlTemplate": "desktop.urls.storeautocomplete",
 				"fields": [{
-					"field": "Name",
+					"field": "name",
 					"param": "name",
 					"mode": "EQUALS"
 				}],
