@@ -89,11 +89,12 @@
 				"locationPageSet": "Locations",
 				"urlTemplate": "desktop.urls.storelocator",
 				"template": "desktop.search.default",
+				"useNewSearcher": true,
 				"queryParam": "q",
 				"disableReverseIpSearch": true,
 				"searchFields": [{
-					"field": "Name",
-					"param": "name",
+					"field": "storeId",
+					"param": "storeid",
 					"mode": "EQUALS"
 				}]
 			}
@@ -118,8 +119,8 @@
           }
         ],
 				"searchFields": [{
-					"field": "StoreId",
-					"param": "corporateCode",
+					"field": "Name",
+					"param": "name",
 					"mode": "EQUALS"
 				},
 				{
