@@ -92,7 +92,7 @@
 				"queryParam": "q",
 				"disableReverseIpSearch": true,
 				"searchFields": [{
-					"field": "Name",
+					"field": "name",
 					"param": "name",
 					"mode": "EQUALS"
 				}]
