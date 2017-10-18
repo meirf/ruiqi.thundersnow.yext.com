@@ -119,7 +119,7 @@
         ],
 				"searchFields": [{
 					"field": "StoreId",
-					"param": "name",
+					"param": "corporateCode",
 					"mode": "EQUALS"
 				},
 				{
