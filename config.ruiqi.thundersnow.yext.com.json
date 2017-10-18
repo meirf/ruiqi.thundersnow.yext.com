@@ -118,7 +118,7 @@
           }
         ],
 				"searchFields": [{
-					"field": "Name",
+					"field": "StoreId",
 					"param": "name",
 					"mode": "EQUALS"
 				},
