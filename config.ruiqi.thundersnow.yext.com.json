@@ -92,7 +92,7 @@
 				"queryParam": "q",
 				"disableReverseIpSearch": true,
 				"searchFields": [{
-					"field": "name",
+					"field": "Name",
 					"param": "name",
 					"mode": "EQUALS"
 				}]
@@ -118,12 +118,12 @@
           }
         ],
 				"searchFields": [{
-					"field": "name",
+					"field": "storeId",
 					"param": "name",
 					"mode": "EQUALS"
 				},
 				{
-					"field": "address",
+					"field": "Address",
 					"param": "address",
 					"mode": "CONTAINS"
 				},
@@ -144,7 +144,7 @@
 			"autocomplete": {
 				"urlTemplate": "desktop.urls.storeautocomplete",
 				"fields": [{
-					"field": "name",
+					"field": "Name",
 					"param": "name",
 					"mode": "EQUALS"
 				}],
