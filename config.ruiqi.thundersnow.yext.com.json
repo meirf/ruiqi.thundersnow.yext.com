@@ -118,12 +118,12 @@
           }
         ],
 				"searchFields": [{
-					"field": "Name",
+					"field": "storeId",
 					"param": "name",
 					"mode": "EQUALS"
 				},
 				{
-					"field": "Address",
+					"field": "address",
 					"param": "address",
 					"mode": "CONTAINS"
 				},
