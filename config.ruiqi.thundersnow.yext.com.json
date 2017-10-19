@@ -93,7 +93,7 @@
 				"queryParam": "q",
 				"disableReverseIpSearch": true,
 				"searchFields": [{
-					"field": "CorporateCode",
+					"field": "SiteId",
 					"param": "siteId",
 					"mode": "EQUALS"
 				}]
