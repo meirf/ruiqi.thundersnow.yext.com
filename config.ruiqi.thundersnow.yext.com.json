@@ -94,7 +94,7 @@
 				"disableReverseIpSearch": true,
 				"searchFields": [{
 					"field": "CorporateCode",
-					"param": "corporatecode",
+					"param": "siteId",
 					"mode": "EQUALS"
 				}]
 			}
