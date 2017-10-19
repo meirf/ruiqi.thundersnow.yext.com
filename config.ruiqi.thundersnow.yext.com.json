@@ -93,6 +93,10 @@
 				"queryParam": "q",
 				"disableReverseIpSearch": true,
 				"searchFields": [{
+					"field": "Name",
+					"param": "name",
+					"mode": "EQUALS"
+				},{
 					"field": "StoreId",
 					"param": "storeId",
 					"mode": "EQUALS"
