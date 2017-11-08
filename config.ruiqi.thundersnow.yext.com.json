@@ -61,7 +61,10 @@
 						"fieldName": "alternate"
 						
 					}
-				]
+				],
+				"locationScope" : {
+					"savedSearch" : "AllLocations"
+				}
 			}
 		},
 		{
