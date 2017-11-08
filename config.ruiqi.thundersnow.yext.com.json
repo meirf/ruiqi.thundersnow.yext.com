@@ -52,6 +52,7 @@
 				"urlTemplate": "desktop.urls.locationPageSet1",
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
+				"pageUrlCustomField": "Pages URL",
 				"urlAliases": [
 					"desktop.urls.locationPageSet1alias1"
 				],
