@@ -96,10 +96,6 @@
 					"field": "Name",
 					"param": "blah",
 					"mode": "EQUALS"
-				},{
-					"field": "StoreId",
-					"param": "storeId",
-					"mode": "EQUALS"
 				}]
 			}
 		},
