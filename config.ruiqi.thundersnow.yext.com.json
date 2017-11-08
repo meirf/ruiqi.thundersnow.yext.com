@@ -69,14 +69,6 @@
 			}
 		},
 		{
-			"name": "Locations Alternate",
-			"locationPageSet": {
-				"urlTemplate": "desktop.urls.locationPageSet1alias2",
-				"template": "desktop.location.default",
-				"outputFormat": ["Html", "Json"]
-			}
-		},
-		{
 			"name": "Bars",
 			"locationPageSet": {
 				"urlTemplate": "desktop.urls.bars",
