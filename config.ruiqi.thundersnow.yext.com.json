@@ -64,7 +64,7 @@
 					}
 				],
 				"locationScope" : {
-					"savedSearch" : "AllLocations"
+					"savedSearch" : "US Locations"
 				}
 			}
 		},
@@ -75,7 +75,7 @@
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
 				"locationScope" : {
-					"savedSearch" : "AllLocations"
+					"savedSearch" : "US Locations"
 				}
 			}
 		},
