@@ -75,7 +75,7 @@
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
 				"locationScope" : {
-					"savedSearch" : "US Locations"
+					"savedSearch" : "Puerto Rico"
 				}
 			}
 		},
@@ -86,7 +86,7 @@
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
 				"locationScope" : {
-					"savedSearch" : "US Locations"
+					"savedSearch" : "Puerto Rico"
 				}
 			}
 		},
