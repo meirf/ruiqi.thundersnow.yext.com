@@ -136,6 +136,15 @@
 			"locationDirectory": {
 				"levels": [
 					{
+						"urlTemplate": "desktop.urls.directory1Country",
+						"template": "desktop.directory.countryList",
+						"field": "Country",
+						"orderBy": {
+							"field": "Country",
+							"order": "ascending"
+						}
+					},
+					{
 						"urlTemplate": "desktop.urls.directory1State",
 						"template": "desktop.directory.stateList",
 						"field": "State",
