@@ -142,9 +142,12 @@
 /**
  * @param locale
  * @param country
+ * @param state
  */
 {template .directory1State}
-{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+	{if $state}
+		{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+	{/if}
 {/template}
 
 // /**
@@ -160,7 +163,11 @@
  * @param state
  */
 {template .directory1City}
-{call desktop.urls.urlWithLocale data="all"}{param url}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/directory1/index.html{/param}{/call}
+	{if $state}
+		{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+	{else}
+		{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+	{/if}
 {/template}
 
 // /**
