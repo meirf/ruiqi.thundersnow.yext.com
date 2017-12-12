@@ -63,9 +63,6 @@
 						
 					}
 				],
-				"locationScope" : {
-					"savedSearch" : "Puerto Rico"
-				}
 			}
 		},
 		{
@@ -74,9 +71,6 @@
 				"urlTemplate": "desktop.urls.locationPageSet1alias2",
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
-				"locationScope" : {
-					"savedSearch" : "Puerto Rico"
-				}
 			}
 		},
 		{
@@ -85,9 +79,6 @@
 				"urlTemplate": "desktop.urls.bars",
 				"template": "desktop.location.default",
 				"outputFormat": ["Html", "Json"],
-				"locationScope" : {
-					"savedSearch" : "Puerto Rico"
-				}
 			}
 		},
 		{
@@ -140,9 +131,6 @@
 					"param": "name",
 					"mode": "EQUALS"
 				}],
-				"locationScopeOverride": {
-					"savedSearch": "Japan"
-				}
 			}
 		},
 		{
@@ -152,9 +140,6 @@
 				"urlTemplate": "desktop.urls.barlocator",
 				"template": "desktop.search.default",
 				"queryParam": "q",
-				"locationScopeOverride": {
-					"savedSearch": "Japan"
-				}
 			}
 		},
 		{
