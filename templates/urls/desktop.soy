@@ -135,8 +135,16 @@
 /**
  * @param locale
  */
-{template .directory1State}
+{template .directory1Country}
 {call desktop.urls.urlWithLocale data="all"}{param url}/directory1/index.html{/param}{/call}
+{/template}
+
+/**
+ * @param locale
+ * @param state
+ */
+{template .directory1State}
+{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
 {/template}
 
 // /**
