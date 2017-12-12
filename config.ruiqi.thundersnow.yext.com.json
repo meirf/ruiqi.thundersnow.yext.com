@@ -62,7 +62,7 @@
 						"fieldName": "alternate"
 						
 					}
-				],
+				]
 			}
 		},
 		{
@@ -70,7 +70,7 @@
 			"locationPageSet": {
 				"urlTemplate": "desktop.urls.locationPageSet1alias2",
 				"template": "desktop.location.default",
-				"outputFormat": ["Html", "Json"],
+				"outputFormat": ["Html", "Json"]
 			}
 		},
 		{
@@ -78,7 +78,7 @@
 			"locationPageSet": {
 				"urlTemplate": "desktop.urls.bars",
 				"template": "desktop.location.default",
-				"outputFormat": ["Html", "Json"],
+				"outputFormat": ["Html", "Json"]
 			}
 		},
 		{
@@ -130,7 +130,7 @@
 					"field": "Name",
 					"param": "name",
 					"mode": "EQUALS"
-				}],
+				}]
 			}
 		},
 		{
@@ -139,7 +139,7 @@
 				"locationPageSet": "Bars",
 				"urlTemplate": "desktop.urls.barlocator",
 				"template": "desktop.search.default",
-				"queryParam": "q",
+				"queryParam": "q"
 			}
 		},
 		{
