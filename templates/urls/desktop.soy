@@ -144,8 +144,10 @@
  * @param country
  * @param state
  */
-{template .directory1State}	
-{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+{template .directory1State}
+{if $state}
+	{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+{/if}
 {/template}
 
 // /**
