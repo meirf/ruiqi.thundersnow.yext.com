@@ -166,6 +166,8 @@
 {template .directory1City}
 	{if $state}
 		{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
+	{else}
+		{call desktop.urls.urlWithLocale data="all"}{param url}/directory1/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}.html{/param}{/call}
 	{/if}
 {/template}
 
