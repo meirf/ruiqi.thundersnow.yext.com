@@ -69,6 +69,18 @@
 			}
 		},
 		{
+			"name": "SingleLocation",
+			"locationPageSet": {
+				"urlTemplate": "desktop.urls.locationPageSet2",
+				"template": "desktop.location.default",
+				"outputFormat": ["Html", "Json"],
+				"pageUrlCustomField": "Pages URL",
+				"locationScope" : {
+					"savedSearch" : "Single Location"
+				}
+			}
+		},
+		{
 			"name": "Locations Alternate",
 			"locationPageSet": {
 				"urlTemplate": "desktop.urls.locationPageSet1alias2",
