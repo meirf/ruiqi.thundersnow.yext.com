@@ -72,7 +72,7 @@
 			"name": "SingleLocation",
 			"locationPageSet": {
 				"urlTemplate": "desktop.urls.locationPageSet2",
-				"template": "desktop.location.default",
+				"template": "desktop.location.empty",
 				"outputFormat": ["Html", "Json"],
 				"pageUrlCustomField": "Pages URL",
 				"locationScope" : {
