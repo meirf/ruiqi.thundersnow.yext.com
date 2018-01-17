@@ -3,7 +3,7 @@
 	"deviceDetected": false,
 	"https": false,
 	"liveSite": true,
-	"locales": ["en","es","es_MX","it"],
+	"locales": ["en"],
 	"templateVersion": 6,
 	"features": [
 		{
@@ -73,7 +73,7 @@
 			"locationPageSet": {
 				"urlTemplate": "desktop.urls.locationPageSet2",
 				"template": "desktop.location.empty",
-				"outputFormat": ["Json"],
+				"outputFormat": ["Html","Json"],
 				"pageUrlCustomField": "Pages URL",
 				"locationScope" : {
 					"savedSearch" : "1611"
