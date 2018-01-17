@@ -73,7 +73,7 @@
 			"locationPageSet": {
 				"urlTemplate": "desktop.urls.locationPageSet2",
 				"template": "desktop.location.empty",
-				"outputFormat": ["Html", "Json"],
+				"outputFormat": ["Json"],
 				"pageUrlCustomField": "Pages URL",
 				"locationScope" : {
 					"savedSearch" : "1611"
