@@ -76,7 +76,7 @@
 				"outputFormat": ["Html", "Json"],
 				"pageUrlCustomField": "Pages URL",
 				"locationScope" : {
-					"savedSearch" : "Bars"
+					"savedSearch" : "1611"
 				}
 			}
 		},
