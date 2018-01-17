@@ -67,6 +67,10 @@
 {call desktop.urls.urlWithLocale data="all"}{param url}/{$country|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$state|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$city|latin:true|other:'-'|spaces:'-'|casing:'lower'}/{$address1|spaces:'-'|latin:true|other:'-'|casing:'lower'}{if $isCollision}-{$id}{/if}.html{/param}{/call}
 {/template}
 
+{template .locationPageSet2}
+{call desktop.urls.urlWithLocale data="all"}{param url}/singleLocation.html{/param}{/call}
+{/template}
+
 /**
  * @param locale
  * @param id
